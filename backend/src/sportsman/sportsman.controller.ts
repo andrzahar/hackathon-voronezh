@@ -5,6 +5,7 @@ import {
   SportsmanErrorExceptionUpdate
 } from "../error/sportsman-error.exception";
 import { SportsmanUpdateDto } from "./dto/sportsman-update.dto";
+import { SportsmanCreateDto } from "./dto/sportsman-create.dto";
 
 @Controller('sportsman')
 export class SportsmanController {
@@ -19,10 +20,10 @@ export class SportsmanController {
      }
   }
 
-  @Post('/update')
-  public async update(@Request() req, @Body() dto: SportsmanUpdateDto) {
+  @Post()
+  public async create(@Request() req, @Body() dto: SportsmanCreateDto) {
     try {
-      return await this.sportsmanService.update(req.user.id, dto)
+      return await this.sportsmanService.create(req.user.id, dto)
     } catch {
       throw new SportsmanErrorExceptionUpdate()
     }

@@ -8,6 +8,8 @@ export class Representative {
   id: Types.ObjectId;
   @Prop({required: true})
   region: string;
+  @Prop({required: true, ref: 'User'})
+  user: Types.ObjectId
 
 }
 
