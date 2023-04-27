@@ -11,3 +11,15 @@
     color: var(--color--blue);
     margin: 50px;
 }
+
+.item {
+    margin: 0 15px;
+}
+
+.item + .item {
+    margin-top: 15px;
+}
+
+.item_title {
+
+}

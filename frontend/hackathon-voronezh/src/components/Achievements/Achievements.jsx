@@ -1,6 +1,7 @@
 // TODO: список прошедших мероприятий, собственные результаты на них
 
 import { Badge, ListGroup, OverlayTrigger, Tooltip } from "react-bootstrap";
+import cn from "classnames";
 
 import classes from "./Achievements.module.css";
 
@@ -17,16 +18,14 @@ const Achievements = () => {
       <ListGroup as="ol" numbered>
         <ListGroup.Item
           as="li"
-          className="d-flex justify-content-between align-items-start"
+          className={cn("d-flex justify-content-between align-items-start", classes.item)}
         >
           <div className="ms-2 me-auto">
-            <div className="fw-bold">Чемпионат России по программированию</div>
+            <div className="fw-bold mb-2">Чемпионат России по программированию</div>
             Продуктовое программирование
           </div>
           <OverlayTrigger placement="left" overlay={renderTooltip}>
-            <Badge bg="primary" pill>
-              6,8
-            </Badge>
+            <Badge bg="primary" pill>6,8</Badge>
           </OverlayTrigger>
         </ListGroup.Item>
       </ListGroup>
