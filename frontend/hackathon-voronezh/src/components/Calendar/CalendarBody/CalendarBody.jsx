@@ -6,6 +6,7 @@ import { useState } from "react";
 import logo from "../../../images/light_background.svg";
 import classes from "./CalendarBody.module.css";
 import Measure from "../../Measure/Measure";
+import {useSelector} from "react-redux";
 
 const CalendarBody = () => {
   return (
@@ -25,6 +26,8 @@ const CalendarItem = () => {
   const closeModal = () => {
     setModal(false);
   };
+
+  const event=useSelector(state=>state.event);
 
   return (
     <>
@@ -49,11 +52,11 @@ const CalendarItem = () => {
           <Card.Text>Продуктовое программирование</Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroup.Item>Дата проведения: 27.04 - 28.04</ListGroup.Item>
+          <ListGroup.Item>Дата проведения: {event.start} - {event.end}</ListGroup.Item>
           <ListGroup.Item>
             Федерация спортивного программирования
           </ListGroup.Item>
-          <ListGroup.Item>Статус: Активен</ListGroup.Item>
+          <ListGroup.Item>Статус: {event.status}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
           <Button
