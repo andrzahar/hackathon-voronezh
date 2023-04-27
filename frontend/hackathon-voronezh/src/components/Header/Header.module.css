@@ -13,5 +13,11 @@
 .headerLogo{
     width: 300px
 }
+.infoGroup{
+    margin-right: 100px;
+}
+.accountLogo:hover{
+    cursor: pointer;
+}
 
 
