@@ -1,6 +1,7 @@
 import classes from './PersonalCabinet.module.css';
 import avatar from '../../images/avatar.webp'
 import account from '../../images/account.svg'
+import Documents from "./Documents/Documents";
 
 const PersonalCabinet = () => {
     const avatar = null;
@@ -45,15 +46,7 @@ const PersonalCabinet = () => {
                     Документы
                 </h2>
                 <div className={classes.personalInfoWrapper}>
-                    {
-                        null ?
-                            <div className={classes.personalInfo__text}>
-                                Паспорт
-                            </div> :
-                            <div className={classes.personalInfo__text}>
-                                Загрузить
-                            </div>
-                    }
+                    <Documents className={classes.personalInfo__text}/>
                 </div>
             </div>
         </div>
