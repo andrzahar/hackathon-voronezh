@@ -4,10 +4,11 @@ import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 
 import classes from "./Authorization.module.css";
+import Measure from "../Measure/Measure";
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const Authorization = () => {
                 }
                 `}
       </style>
-      {/* {modal ? <ModalReg closeModal={() => closeModal()}/> : <></>} */}
+       {modal ? <Measure closeModal={() => closeModal()}/> : <></>}
       {auth ? (
         <>
           <div className={classes.authorization}>

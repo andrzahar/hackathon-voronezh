@@ -1,6 +1,7 @@
 import Authorization from "../components/Authorization/Authorization";
 import {ROUTE_AUTH, ROUTE_MAIN_CONTAINER} from "./routes";
 import Calendar from "../components/Calendar/Calendar";
+import WelcomePage from "../components/WelcomePage/WelcomePage";
 
 export const BASE_ROUTES = [
   {
@@ -14,6 +15,7 @@ export const AUTH_ROUTES = [
   {
     path: ROUTE_AUTH,
     name: "Авторизация",
-    Element: Authorization,
-  },
+    Element: WelcomePage,
+  }
+
 ];
