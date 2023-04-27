@@ -21,6 +21,8 @@ export class Passport {
   @Prop({required: true})
   @Matches(/^\d{3}-\d{3}$/)
   companyCode: string;
+  @Prop({required:true})
+  birthplace:string
 }
 
 export const PassportSchema = SchemaFactory.createForClass(Passport);

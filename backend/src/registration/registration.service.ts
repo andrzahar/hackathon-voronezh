@@ -16,7 +16,6 @@ export class RegistrationService {
     return await this.jwtService.signAsync(this.createPayload(user));
   }
 
-  //TODO: поменять payload и в авторизации и в регистрации
   private createPayload(user: UserDocument) {
     return {
       login: user.login,
@@ -24,8 +23,6 @@ export class RegistrationService {
       pass: user.password,
       phone: user.phone,
       role: user.role,
-      isCompany: user.isCompany,
-      sex: user.sex
     }
   }
 }

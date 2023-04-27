@@ -9,11 +9,7 @@ export enum Role {
   Sportsman = 'Спортсмен',
   Representative = 'Представитель региональной Фередрации',
   Partner = 'Партнёр',
-}
-
-export enum Sex {
-  Male = "m",
-  Female = "f",
+  None = 'none',
 }
 
 @Schema()
@@ -28,21 +24,10 @@ export class User {
   @Prop({required: true})
   @IsPhoneNumber()
   phone: string;
-  @Prop({enum: Role, default: null})
+  @Prop({enum: Role, default: Role.None})
   role : Role;
   @Prop({required: true})
   mail: string;
-  @Prop({required: true})
-  isCompany: boolean;
-  @Prop({enum: Sex, default: Sex.Male})
-  sex: Sex;
-  @Prop({required: false, type: Date.now()})
-  birthday: string
-  @Prop({required: true, ref: 'Passport'})
-  passport: Types.ObjectId;
-  @Prop({required: true, ref: 'OMS'})
-  OMS: Types.ObjectId;
-
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

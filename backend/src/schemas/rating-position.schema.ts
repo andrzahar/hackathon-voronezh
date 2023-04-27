@@ -14,7 +14,7 @@ export class RatingPosition {
   whatLiked: string;
   @Prop({required: true})
   whatUnliked: string;
-  @Prop({required: true, ref: 'event'})
+  @Prop({required: true, ref: 'Event'})
   event: Types.ObjectId;
 }
 
