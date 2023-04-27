@@ -1,5 +1,5 @@
-import Authorization from "../components/Authorization/Authorization.jsx";
-import { ROUTE_AUTH } from "./routes.js";
+import Authorization from "../components/Authorization/Authorization";
+import { ROUTE_AUTH } from "./routes";
 
 export const BASE_ROUTES = [
   // {

@@ -1,4 +1,4 @@
-import { AUTH_ROUTES, BASE_ROUTES } from "../baseRoutes.js";
+import { AUTH_ROUTES, BASE_ROUTES } from "../baseRoutes";
 
 export const getRoutesByAuth = (user) => {
   if (user.token) {
