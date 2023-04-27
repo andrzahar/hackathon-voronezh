@@ -23,12 +23,12 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink to={'/calendar'} activeClassName={classes.activeClicked}>
+            <NavLink to={'/calendar'} className={({ isActive }) => (isActive ? classes.activeClicked : '')} >
               <CDBSidebarMenuItem icon="calendar" className={classes.sidebarElement}>
                 Мероприятия
               </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink to={'/achievements'} activeClassName={classes.activeClicked}>
+            <NavLink to={'/achievements'} className={({ isActive }) => (isActive ? classes.activeClicked : '')} >
               <CDBSidebarMenuItem icon="chart-line" className={classes.sidebarElement}>
                 Достижения
               </CDBSidebarMenuItem>

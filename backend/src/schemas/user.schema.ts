@@ -5,11 +5,11 @@ import {IsPhoneNumber} from "class-validator";
 export type UserDocument = User & Document;
 
 export enum Role {
-  Administrator_FSP = 'Администратор ФСП',
-  Sportsman = 'Спортсмен',
-  Representative = 'Представитель региональной Фередрации',
-  Partner = 'Партнёр',
-  None = 'none',
+  ADMINISTRATOR_FSP = 'Администратор ФСП',
+  SPORTSMAN = 'Спортсмен',
+  REPRESENTATIVE = 'Представитель региональной Фередрации',
+  PARTNER = 'Партнёр',
+  NONE = 'none',
 }
 
 @Schema()
@@ -20,11 +20,15 @@ export class User {
   @Prop({required: true})
   login: string;
   @Prop({required: true})
-  name: string;
+  firstname: string;
+  @Prop({required: true})
+  surname: string;
+  @Prop({required: true})
+  patronymic: string;
   @Prop({required: true})
   @IsPhoneNumber()
   phone: string;
-  @Prop({enum: Role, default: Role.None})
+  @Prop({enum: Role, default: Role.NONE})
   role : Role;
   @Prop({required: true})
   mail: string;

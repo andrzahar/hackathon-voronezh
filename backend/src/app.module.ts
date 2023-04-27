@@ -10,6 +10,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { MongooseConfigService } from './config/MongooseConfigService';
 import { EventsModule } from './events/events.module';
 import { PassportModule } from './passport/passport.module';
+import { SportsmanModule } from './sportsman/sportsman.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { PassportModule } from './passport/passport.module';
     }),
     EventsModule,
     PassportModule,
+    SportsmanModule,
   ],
   providers: [
     {

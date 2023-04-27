@@ -24,7 +24,7 @@ export class AuthService {
   private createPayload(user: UserDocument) {
     return {
       login: user.login,
-      sub: user.id,
+      id: user.id,
       pass: user.password,
       phone: user.phone,
       role: user.role,
