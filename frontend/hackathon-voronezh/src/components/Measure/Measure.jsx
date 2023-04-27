@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from "react-bootstrap/ListGroup";
-import logo from "../../images/headerLogo.svg";
+import logo from "../../images/light_background.svg";
 import Card from "react-bootstrap/Card";
 import {Accordion} from "react-bootstrap";
 

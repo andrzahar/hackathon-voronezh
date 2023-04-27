@@ -2,7 +2,7 @@ import classes from './CalendarBody.module.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from "react-bootstrap/Button";
-import logo from '../../../images/headerLogo.svg'
+import logo from '../../../images/light_background.svg'
 import {useState} from "react";
 import Measure from "../../Measure/Measure";
 
