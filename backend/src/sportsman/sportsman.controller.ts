@@ -25,9 +25,9 @@ export class SportsmanController {
   @Post()
   @UseGuards(RolesGuard)
   @Roles('Представитель региональной Фередрации')
-  public async create(@Request() req, @Body() dto: SportsmanCreateDto) {
+  public async create(@Body() dto: SportsmanCreateDto) {
     try {
-      return await this.sportsmanService.create(req.user.id, dto)
+      return await this.sportsmanService.create(dto)
     } catch {
       throw new SportsmanErrorExceptionUpdate()
     }
