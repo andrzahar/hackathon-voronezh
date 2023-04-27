@@ -1,14 +1,24 @@
-import { Body, Controller, Delete, Get, Patch, Post, Request } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  MethodNotAllowedException,
+  Patch,
+  Post,
+  Request
+} from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { UserUpdateDto } from "./dto/user-update.dto";
 import { UserDeleteDto } from "./dto/user-delete.dto";
 import { RegistrationDto } from "../registration/dto/registration.dto";
 
-@Controller('users')
+@Controller('user')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('/info')
+  @Get()
   public async getInfo(@Request() req) {
     return await this.usersService.findOneByMail(req.user.mail)
   }
@@ -26,5 +36,15 @@ export class UsersController {
   @Delete('/delete')
   public async deleteUser(@Body() dto: UserDeleteDto) {
     return await this.usersService.delete(dto)
+  }
+
+  @HttpCode(200)
+  @Post('/role')
+  public async addRole(@Request() req) {
+     try {
+       return this.usersService.roles({role: req.user.role, userId: req.user.id})
+     } catch {
+        throw new MethodNotAllowedException()
+     }
   }
 }

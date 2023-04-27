@@ -10,14 +10,14 @@ import { SignInDto } from './dto/sign-in.dto';
 import { Public } from './auth.guard';
 import { AuthMethodNotAllowed } from "../error/auth-error.exception";
 
-@Controller('api/auth')
+@Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @HttpCode(HttpStatus.OK)
   @Post()
   @Public()
-  @Redirect('api/user/info')
+  @Redirect('/user/info')
   async signIn(@Body() dto: SignInDto) {
     try {
       console.table(dto)

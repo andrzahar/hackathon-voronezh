@@ -14,6 +14,7 @@ export class EventsController {
   }
 
 
+  //TODO: поменять роли на соответствующие
   @Post('/create')
   @Roles('Администратор ФСП', 'Спортсмен')
   @UseGuards(RolesGuard)
