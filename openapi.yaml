@@ -166,13 +166,14 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sportsman'
       responses:
         '200':
           description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Sportsman'
         '405':
           description: Invalid input
           
@@ -279,6 +280,12 @@ components:
       type: object
       properties:
         id:
+          type: string
+        name:
+          type: string
+        shortName:
+          type: string
+        description:
           type: string
         creator:
           $ref: '#/components/schemas/User'
