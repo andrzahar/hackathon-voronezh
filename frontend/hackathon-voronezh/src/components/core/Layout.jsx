@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { getAuthUser } from "../../store/selectors/authSelector";
-import Sidebar from "../sidebar/Sidebar";
+import { getAuthUser } from '../../store/selectors/authSelector';
+import Sidebar from '../sidebar/Sidebar';
 
 const LayoutWithoutStore = ({ user, children }) => {
   if (user.token) {
@@ -17,7 +17,7 @@ const LayoutWithoutStore = ({ user, children }) => {
   return <>{children}</>;
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: getAuthUser(state),
 });
 

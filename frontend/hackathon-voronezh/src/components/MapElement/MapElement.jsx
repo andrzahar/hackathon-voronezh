@@ -1,17 +1,11 @@
-import classes from "./MapElement.module.css";
+import classes from './MapElement.module.css';
 
 const MapElement = () => {
   return (
     <div>
       <h1 className={classes.mapTitle}>География ФСП</h1>
       <div className={classes.map}>
-        <svg
-          width="1240"
-          height="926"
-          viewBox="0 0 1779 926"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="1240" height="926" viewBox="0 0 1779 926" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -277,12 +271,7 @@ const MapElement = () => {
             fill="#A6A6A9"
           ></path>
 
-          <a
-            xlinkHref="https://msk.fsp-russia.com/"
-            className="map__area"
-            target="_blank"
-            data-region="moscow"
-          >
+          <a xlinkHref="https://msk.fsp-russia.com/" className="map__area" target="_blank" data-region="moscow">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -652,12 +641,7 @@ const MapElement = () => {
             fill="#A6A6A9"
           ></path>
 
-          <a
-            xlinkHref="https://rklm.fsp-russia.com"
-            className="map__area"
-            target="_blank"
-            data-region="kalmykia"
-          >
+          <a xlinkHref="https://rklm.fsp-russia.com" className="map__area" target="_blank" data-region="kalmykia">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -947,12 +931,7 @@ const MapElement = () => {
             fill="#A7A7AA"
           ></path>
 
-          <a
-            xlinkHref="https://msk.fsp-russia.com/"
-            className="map__popup"
-            target="_blank"
-            data-region="moscow"
-          >
+          <a xlinkHref="https://msk.fsp-russia.com/" className="map__popup" target="_blank" data-region="moscow">
             <g>
               <svg
                 width="260"

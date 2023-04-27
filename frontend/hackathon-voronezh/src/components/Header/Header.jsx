@@ -1,8 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from 'react-router-dom';
 
-import classes from "./Header.module.css";
-import headerLogo from "../../images/headerLogo.svg";
-import accountLogo from "../../images/account.svg";
+import classes from './Header.module.css';
+import headerLogo from '../../images/headerLogo.svg';
+import accountLogo from '../../images/account.svg';
 
 const Header = () => {
   return (
@@ -12,7 +12,7 @@ const Header = () => {
         <div className={classes.title}></div>
       </div>
       <div className={classes.infoGroup}>
-        <Link to={"/account"}>
+        <Link to={'/account'}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"

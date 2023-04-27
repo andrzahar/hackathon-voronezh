@@ -1,51 +1,50 @@
 const initialState = {
+  id: '',
+  creator: {
     id: '',
-    creator: {
-        id: '',
-        name: '',
-        surname: '',
-        patronymic: '',
-        mail: '',
-        phone: '',
-        role: ''
+    name: '',
+    surname: '',
+    patronymic: '',
+    mail: '',
+    phone: '',
+    role: '',
+  },
+  members: [
+    {
+      eventMember: {
+        user: {
+          id: '',
+          name: '',
+          surname: '',
+          patronymic: '',
+          mail: '',
+          phone: '',
+          role: '',
+        },
+        position: '',
+        score: '',
+      },
     },
-    members: [
-        {
-            eventMember: {
-                user: {
-                    id: '',
-                    name: '',
-                    surname: '',
-                    patronymic: '',
-                    mail: '',
-                    phone: '',
-                    role: ''
-                },
-                position: '',
-                score: ''
-            }
-        }
-
+  ],
+  start: '',
+  end: '',
+  status: '',
+  criteria: [],
+  rating: {
+    ratingPosition: [
+      {
+        name: '',
+        points: '',
+        whatLiked: '',
+        whatUnliked: '',
+      },
     ],
-    start: '',
-    end: '',
-    status: '',
-    criteria: [],
-    rating: {
-        ratingPosition: [
-            {
-                name: '',
-                points: '',
-                whatLiked: '',
-                whatUnliked: ''
-            }
-        ]
-    }
-}
+  },
+};
 
 export const eventReducer = (state = initialState, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    default:
+      return state;
+  }
+};

@@ -1,11 +1,11 @@
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-import classes from "./Documents.module.css";
+import classes from './Documents.module.css';
 
 const Documents = () => {
   return (
-    <Form style={{ padding: "20px" }}>
+    <Form style={{ padding: '20px' }}>
       <style type="text/css">
         {`
                     .btn-blue {
@@ -19,12 +19,12 @@ const Documents = () => {
                 }
                 `}
       </style>
-      <Form.Group className="mb-3" style={{ width: "50%" }}>
+      <Form.Group className="mb-3" style={{ width: '50%' }}>
         <Form.Label>Серия номер паспорта</Form.Label>
-        <Form.Control type="text" value={"234"} />
+        <Form.Control type="text" value={'234'} />
       </Form.Group>
 
-      <Form.Group className="mb-3" style={{ width: "50%" }}>
+      <Form.Group className="mb-3" style={{ width: '50%' }}>
         <Form.Label>ПОЛИС</Form.Label>
         <Form.Control type="text" />
       </Form.Group>

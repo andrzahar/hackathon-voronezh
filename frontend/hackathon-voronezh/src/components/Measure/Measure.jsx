@@ -1,21 +1,21 @@
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import ListGroup from "react-bootstrap/ListGroup";
-import Card from "react-bootstrap/Card";
-import { Accordion } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Card from 'react-bootstrap/Card';
+import { Accordion } from 'react-bootstrap';
 
-import logo from "../../images/light_background.svg";
-import classes from "./Measure.module.css";
+import logo from '../../images/light_background.svg';
+import classes from './Measure.module.css';
 
 const Measure = ({ closeModal }) => {
-  console.log("modal");
+  console.log('modal');
 
   return (
     <div
       className={`modal show`}
       style={{
-        display: "block",
-        position: "absolute",
+        display: 'block',
+        position: 'absolute',
         zIndex: 3,
       }}
     >
@@ -45,9 +45,7 @@ const Measure = ({ closeModal }) => {
           <Card.Img variant="top" src={logo} />
           <ListGroup className="list-group-flush">
             <ListGroup.Item>Дата проведения: 27.04 - 28.04</ListGroup.Item>
-            <ListGroup.Item>
-              Федерация спортивного программирования
-            </ListGroup.Item>
+            <ListGroup.Item>Федерация спортивного программирования</ListGroup.Item>
             <ListGroup.Item>Статус: Активен</ListGroup.Item>
           </ListGroup>
           <ListGroup>
@@ -66,12 +64,11 @@ const Measure = ({ closeModal }) => {
           </ListGroup>
           <ListGroup className="list-group-flush">
             <ListGroup.Item>Краткая информация о мероприятии:</ListGroup.Item>
-            X-MAS HACK 2022 – это не просто хакатон. Это масштабное мероприятие,
-            в котором шансы попытать удачу есть у каждого.
+            X-MAS HACK 2022 – это не просто хакатон. Это масштабное мероприятие, в котором шансы попытать удачу есть у
+            каждого.
             <br />
-            Идеатон на X-MAS HACK – секция, в которой ты можешь предложить свою
-            идею, проработанную по определенным критериям, обсудить ее с
-            экспертом и побороться за денежный приз.
+            Идеатон на X-MAS HACK – секция, в которой ты можешь предложить свою идею, проработанную по определенным
+            критериям, обсудить ее с экспертом и побороться за денежный приз.
             <br />
             Общий призовой фонд X-MAS HACK 2022 составляет 1 700 000 рублей.
           </ListGroup>
