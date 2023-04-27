@@ -2,12 +2,11 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY ./package.json /app/package.json
+COPY ./package-lock.json /app/package-lock.json
 
-RUN npm install
+COPY . /app
 
 COPY . .
 
-CMD ["npm", "run", "dev"]
-
-EXPOSE 5173
+RUN npm run dev
