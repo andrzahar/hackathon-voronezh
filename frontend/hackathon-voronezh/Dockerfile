@@ -7,4 +7,4 @@ COPY ./package-lock.json /app/package-lock.json
 
 COPY . /app
 
-RUN npm run dev
+CMD ["npm", "run", "dev"]
