@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--color--blue);
+    margin: 50px;
+}
+
+.item {
+    margin: 0 15px;
+}
+
+.item + .item {
+    margin-top: 15px;
+}
+
+.item_title {
+
+}

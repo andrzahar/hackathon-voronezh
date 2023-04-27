@@ -58,7 +58,7 @@ const Authorization = () => {
                 }
                 `}
       </style>
-       {modal ? <Measure closeModal={() => closeModal()}/> : <></>}
+      {modal ? <Measure closeModal={() => closeModal()} /> : <></>}
       {auth ? (
         <>
           <div className={classes.authorization}>
