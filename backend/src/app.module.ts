@@ -9,6 +9,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
 import { MongooseConfigService } from './config/MongooseConfigService';
 import { EventsModule } from './events/events.module';
+import { PassportModule } from './passport/passport.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { EventsModule } from './events/events.module';
       signOptions: { expiresIn: '1 d' },
     }),
     EventsModule,
+    PassportModule,
   ],
   providers: [
     {

@@ -28,8 +28,6 @@ export class AuthService {
       pass: user.password,
       phone: user.phone,
       role: user.role,
-      isCompany: user.isCompany,
-      sex: user.sex
     }
   }
 }

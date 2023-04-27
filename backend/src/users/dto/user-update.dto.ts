@@ -1,7 +1,5 @@
-import { IsDate, IsNotEmpty, IsPhoneNumber } from "class-validator";
-import { Role, Sex } from "../../schemas/user.schema";
-import { Passport } from "../../schemas/passport.schema";
-import { OMS } from "../../schemas/OMS.schema";
+import { IsNotEmpty, IsPhoneNumber } from "class-validator";
+import { Role } from "../../schemas/user.schema";
 
 export class UserUpdateDto {
   @IsNotEmpty()
@@ -19,15 +17,4 @@ export class UserUpdateDto {
   role?: Role;
   @IsNotEmpty()
   mail?: string;
-  @IsNotEmpty()
-  isCompany?: boolean;
-  @IsNotEmpty()
-  sex?: Sex;
-  @IsDate()
-  @IsNotEmpty()
-  birthday?: string
-  @IsNotEmpty()
-  passport?: Passport;
-  @IsNotEmpty()
-  OMS?: OMS;
 }

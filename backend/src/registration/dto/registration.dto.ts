@@ -1,9 +1,4 @@
-import { IsDate, IsNotEmpty, IsPhoneNumber } from "class-validator";
-import { Role, Sex } from "../../schemas/user.schema";
-import { Passport } from "../../schemas/passport.schema";
-import { OMS } from "../../schemas/OMS.schema"
-
-//TODO: поменять ДТО в зависимости от контракта
+import { IsNotEmpty, IsPhoneNumber } from "class-validator";
 export class RegistrationDto {
   @IsNotEmpty()
   password: string;
@@ -15,18 +10,5 @@ export class RegistrationDto {
   @IsNotEmpty()
   phone: string;
   @IsNotEmpty()
-  role : Role;
-  @IsNotEmpty()
   mail: string;
-  @IsNotEmpty()
-  isCompany: boolean;
-  @IsNotEmpty()
-  sex: Sex;
-  @IsDate()
-  @IsNotEmpty()
-  birthday: string
-  @IsNotEmpty()
-  passport: Passport;
-  @IsNotEmpty()
-  OMS: OMS;
 }

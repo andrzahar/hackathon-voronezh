@@ -20,6 +20,8 @@ export class Event {
   @Prop({ required: true, type: Date.now() })
   @IsDate()
   time_start: string;
+  @Prop({required: true})
+  criterions: string[];
   @Prop({ required: true, ref: 'User' })
   members: Types.ObjectId[];
   @Prop({ required: true, ref: 'User' })
