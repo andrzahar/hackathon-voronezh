@@ -1,9 +1,9 @@
 // TODO: список прошедших мероприятий, собственные результаты на них
 
-import { Badge, ListGroup, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import cn from 'classnames';
+import { ListGroup } from 'react-bootstrap';
 
 import classes from './Achievements.module.css';
+// eslint-disable-next-line import/extensions
 import AchievementsItem from './AchievementsItem';
 
 const Achievements = () => {

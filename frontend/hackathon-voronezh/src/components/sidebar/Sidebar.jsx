@@ -28,7 +28,7 @@ const Sidebar = () => {
                 Мероприятия
               </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink to={'/calendar'} activeClassName={classes.activeClicked}>
+            <NavLink to={'/achievements'} activeClassName={classes.activeClicked}>
               <CDBSidebarMenuItem icon="chart-line" className={classes.sidebarElement}>
                 Достижения
               </CDBSidebarMenuItem>
