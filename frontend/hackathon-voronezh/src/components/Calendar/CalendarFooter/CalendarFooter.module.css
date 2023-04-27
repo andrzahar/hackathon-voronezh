@@ -27,3 +27,13 @@
     color: var(--color--grey);
     text-align: center;
 }
+@media screen and (max-width:1024px){
+    .footer{
+        width: 90%;
+    }
+}
+@media screen and (max-width:400px){
+    .footer{
+        width: 80%;
+    }
+}

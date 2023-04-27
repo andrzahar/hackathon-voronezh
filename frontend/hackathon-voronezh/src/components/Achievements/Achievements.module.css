@@ -3,7 +3,7 @@
     padding: 15px;
 }
 
-.title{
+.title {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -19,4 +19,13 @@
 
 .item_title {
 
+}
+
+@media screen and (width < 1024px) {
+    .item {
+        margin: 0 15px;
+    }
+    .container{
+        padding: 0;
+    }
 }
