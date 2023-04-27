@@ -1,14 +1,17 @@
-import {combineReducers, createStore} from "redux";
-import {sportsmanReducer} from "./reducers/sportsman.js";
-import {administratorReducer} from "./reducers/administrator.js";
-import {representativeReducer} from "./reducers/representative.js";
-import {partnerReducer} from "./reducers/partner.js";
+import { combineReducers, createStore } from "redux";
 
-export const rootReducer=combineReducers({
-    sportsman: sportsmanReducer,
-    administrator: administratorReducer,
-    representative: representativeReducer,
-    partner: partnerReducer
-})
+import { sportsmanReducer } from "./reducers/sportsman";
+import { administratorReducer } from "./reducers/administrator";
+import { representativeReducer } from "./reducers/representative";
+import { partnerReducer } from "./reducers/partner";
+import {userReducer} from "./reducers/userReducer";
 
-export const store=createStore(rootReducer);
+export const rootReducer = combineReducers({
+  user: userReducer,
+  sportsman: sportsmanReducer,
+  administrator: administratorReducer,
+  representative: representativeReducer,
+  partner: partnerReducer,
+});
+
+export const store = createStore(rootReducer);

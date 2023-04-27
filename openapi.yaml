@@ -1,0 +1,194 @@
+openapi: 3.0.3
+info:
+  title: hackathon-voronezh
+  version: 1.0.0
+servers:
+  - url: http://91.142.72.178:5000/
+paths:
+  /auth:
+    post:
+      summary: Auth user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAuth'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                description: userKey
+                type: string
+        '405':
+          description: Invalid input
+  /preferences:
+    get:
+      summary: Get all preferences
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Preference'
+        '405':
+          description: Invalid input
+  /user/preferences:
+    post:
+      summary: Set general preferences of user
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Preference'
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+  /user/adventure:
+    post:
+      summary: add user adventure
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstFlight:
+                  type: string
+                secondFlight:
+                  type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Adventure'
+        '405':
+          description: Invalid input
+  /user/adventure/preferences:
+    post:
+      summary: set user preferences for adventure
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: adventureId
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Preference'
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+  /user/adventure/route:
+    get:
+      summary: get route
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: adventureId
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+
+components:
+  schemas:
+    Sex:
+      type: string
+      enum:
+        - m
+        - f
+    UserAuth:
+      type: object
+      properties:
+        mail:
+          type: string
+        password:
+          type: string
+          format: password
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+        creator:
+          $ref: '#/components/schemas/User'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventMember'
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+    EventMember:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        position:
+          type: integer
+        score:
+          type: number
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        mail:
+          type: string
+        phone:
+          type: string
+        birthday:
+          type: string
+          format: date
+        isCompany:
+          type: boolean
+        sex:
+          $ref: '#/components/schemas/Sex'

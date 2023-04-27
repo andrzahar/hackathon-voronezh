@@ -1,10 +1,8 @@
-const initialState={
+const initialState = {};
 
-}
-
-export const administratorReducer=(state=initialState, action)=>{
-    switch (action.type) {
-        default:
-            return state;
-    }
+export const administratorReducer = (action, state = initialState) => {
+  switch (action?.type) {
+    default:
+      return state;
+  }
 };
