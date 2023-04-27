@@ -9,3 +9,6 @@
     font-weight: 600;
     font-size: 36px;
 }
+path:hover{
+    fill: var(--color--darkGrey);
+}

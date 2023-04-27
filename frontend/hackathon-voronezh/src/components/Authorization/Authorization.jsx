@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 
 import classes from './Authorization.module.css';
-import Measure from '../Measure/Measure';
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
@@ -44,7 +43,7 @@ const Authorization = () => {
   };
 
   return (
-    <>
+    <div style={{padding:'30px 0'}}>
       <style type="text/css">
         {`
                     .btn-blue {
@@ -58,7 +57,7 @@ const Authorization = () => {
                 }
                 `}
       </style>
-      {modal ? <Measure closeModal={() => closeModal()} /> : <></>}
+      {/*{modal ? <Measure closeModal={() => closeModal()} /> : <></>}*/}
       {auth ? (
         <>
           <div className={classes.authorization}>
@@ -82,8 +81,8 @@ const Authorization = () => {
             </Form>
             <div className={classes.infoCard_signIn}>
               <div className={classes.textWrapper}>
-                <h2 className={classes.welcomeTitle}>Приветствие</h2>
-                <p className={classes.text}>Какой-то текст про то как классно будет если ты войдешь</p>
+                <h2 className={classes.welcomeTitle}>Здравствуйте👋</h2>
+                <p className={classes.text}>Если Вы еще не зарегестрированы в нашей системе, будем рады Вашему присоединению!</p>
                 <Button onClick={togglePage} className={classes.btnTel} variant="red">
                   Зарегистрироваться
                 </Button>
@@ -96,8 +95,8 @@ const Authorization = () => {
           <div className={classes.authorization}>
             <div className={classes.infoCard_signIn}>
               <div className={classes.textWrapper}>
-                <h2 className={classes.welcomeTitle}>Приветствие</h2>
-                <p className={classes.text}>Какой-то текст про то как классно будет если ты войдешь</p>
+                <h2 className={classes.welcomeTitle}>Уже есть аккаунт?</h2>
+                <p className={classes.text}>Бцдем рады Вашему возвращению.</p>
                 <Button onClick={togglePage} className={classes.btnTelIn} variant="blue">
                   Войти
                 </Button>
@@ -125,7 +124,7 @@ const Authorization = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 
