@@ -55,3 +55,7 @@
     border: 1px dashed var(--color--darkGrey);
     border-radius: 10px;
 }
+.btn{
+    display: flex;
+    margin-top: 10px;
+}
