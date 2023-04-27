@@ -1,7 +1,8 @@
-import {fetchLogin, fetchRegister} from "../api/authApi";
+import { fetchLogin, fetchRegister } from '../api/authApi';
 
 export async function authLogin(credentials) {
     try {
+        console.log('credentials', credentials)
         const response = await fetchLogin(credentials);
         const {userKey} = response;
 

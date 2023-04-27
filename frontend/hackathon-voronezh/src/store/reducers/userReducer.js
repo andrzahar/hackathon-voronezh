@@ -4,7 +4,7 @@ const initialState = {
     surName: 'Адамович',
     patronymic: 'Николаевич',
     login: 'RNOre',
-    token: "undefined",
+    token: undefined,
     phone: '89877807652',
     role: 'Спортсмен'//enum
 };
