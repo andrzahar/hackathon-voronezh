@@ -1,0 +1,50 @@
+.personalCabinet{
+    width: 100%;
+    padding: 50px;
+}
+.title{
+    font-weight: 600;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.personal{
+    display: flex;
+}
+.personal_img{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    background-color: var(--color--darkGrey);
+}
+.personalData{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.basicData{
+    flex:1;
+    padding:20px 40px;
+}
+.basicData>p{
+    margin-bottom: 10px;
+}
+.contacts{
+    flex: 1;
+    padding:20px 40px;
+}
+.contacts>p{
+    margin-bottom: 10px;
+}
+.personalInfo__title{
+    font-width: 400;
+    font-size: 24px;
+    margin: 50px 0 20px 0;
+}
+.personalInfo__text{
+    padding: 20px;
+}
+.personalInfoWrapper{
+    border: 1px dashed var(--color--darkGrey);
+    border-radius: 10px;
+}
