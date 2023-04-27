@@ -140,6 +140,12 @@ components:
       enum:
         - m
         - f
+    EventStatus:
+      type: string
+      enum:
+        - completed
+        - now
+        - upcoming
     UserAuth:
       type: object
       properties:
@@ -165,6 +171,8 @@ components:
         end:
           type: string
           format: date-time
+        status:
+          $ref: '#/components/schemas/EventStatus'
     EventMember:
       type: object
       properties:
@@ -192,3 +200,21 @@ components:
           type: boolean
         sex:
           $ref: '#/components/schemas/Sex'
+    Criterion:
+      type: object
+      properties:
+        criterions:
+          type: array
+          items:
+            type: string
+    RatingPosition:
+      type: object
+      properties:
+        name:
+          type: string
+        points:
+          type: integer
+        whatLiked:
+          type: string
+        whatUnliked:
+          type: string
