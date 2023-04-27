@@ -1,0 +1,17 @@
+.wrapper{
+    height: 70px;
+    width: 100%;
+    background-color: var(--color--darkGrey);
+    display: flex;
+    align-items: center;
+
+}
+.titleGroup{
+    flex:4;
+    padding: 70px;
+}
+.headerLogo{
+    width: 300px
+}
+
+
