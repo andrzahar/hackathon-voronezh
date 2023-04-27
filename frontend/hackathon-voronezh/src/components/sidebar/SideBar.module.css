@@ -1,0 +1,6 @@
+.sidebarElement{
+    color: var(--color--grey);
+}
+.activeClicked{
+    color: var(--color--red);
+}
