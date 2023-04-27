@@ -78,9 +78,6 @@ const PersonalCabinet = () => {
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-                        <div className={classes.personalInfo__text}>
-                            Серия номер паспорта: {sportsmanInfo.passport.number}
-                        </div>
                         <div className={classes.personalInfo__text}>ПОЛИС: {sportsmanInfo.oms}</div>
                         {/* <Documents className={classes.personalInfo__text}/> */}
                     </div>

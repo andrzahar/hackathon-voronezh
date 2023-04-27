@@ -21,10 +21,10 @@ const EditModal = ({closeModal}) => {
     const [patrValue, setPatrValue]=useState(userInfo.patronymic);
     const [phoneValue, setPhoneValue]=useState(userInfo.phone);
     const [pasValue, setPasValue]=useState(sportsmanInfo.passport.number);
-    const [pasOwnerValue, setPasOwnerValue]=useState(sportsmanInfo.passport.number);
-    const [pasIssueValue, setPasIssueValue]=useState(sportsmanInfo.passport.number);
-    const [pasCompanyCodeValue, setCompanyCodeValue]=useState(sportsmanInfo.passport.number);
-    const [pasBValue, setPasBValue]=useState(sportsmanInfo.passport.number);
+    const [pasOwnerValue, setPasOwnerValue]=useState(sportsmanInfo.passport.nameOwner);
+    const [pasIssueValue, setPasIssueValue]=useState(sportsmanInfo.passport.issueDate);
+    const [pasCompanyCodeValue, setCompanyCodeValue]=useState(sportsmanInfo.passport.companyCode);
+    const [pasBValue, setPasBValue]=useState(sportsmanInfo.passport.birthdayplace);
 
     const [omsValue, setOmsValue]=useState(sportsmanInfo.oms);
 
@@ -89,6 +89,22 @@ const EditModal = ({closeModal}) => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
+                            <Form.Label>Пол</Form.Label>
+                            <Form.Check
+                                name={'sex'}
+                                label={'м'}
+                                type={"radio"}
+                                id={'male'}
+                            />
+                            <Form.Check
+                                name={'sex'}
+                                label={'ж'}
+                                type={"radio"}
+                                id={'female'}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
                             <Form.Label>Телефон</Form.Label>
                             <Form.Control value={phoneValue} onChange={(e)=>setPhoneValue(e.currentTarget.value)}/>
                         </Form.Group>
@@ -100,22 +116,22 @@ const EditModal = ({closeModal}) => {
 
                         <Form.Group className="mb-3">
                             <Form.Label>Кем выдан</Form.Label>
-                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                            <Form.Control value={pasOwnerValue} onChange={(e)=>setPasOwnerValue(e.currentTarget.value)}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label>Дата выдачи</Form.Label>
-                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                            <Form.Control value={pasIssueValue} onChange={(e)=>setPasIssueValue(e.currentTarget.value)}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label>Код подразделения</Form.Label>
-                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                            <Form.Control value={pasCompanyCodeValue} onChange={(e)=>setCompanyCodeValue(e.currentTarget.value)}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label>Регистрация</Form.Label>
-                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                            <Form.Control value={pasBValue} onChange={(e)=>setPasBValue(e.currentTarget.value)}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
