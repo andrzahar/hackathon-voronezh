@@ -50,8 +50,8 @@ describe('AuthController', () => {
 
   it('/auth Sign in user', () => {
     const post: SignInDto = new SignInDto();
-    post.mail = 'mail';
-    post.password = 'mail';
+    post.mail = 'andr.zahar2@gmail.com';
+    post.password = 'string';
     return request(app.getHttpServer())
       .post('/auth')
       .send(post)

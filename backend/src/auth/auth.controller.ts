@@ -17,7 +17,6 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post()
   @Public()
-  @Redirect('/user/info')
   async signIn(@Body() dto: SignInDto) {
     try {
       console.table(dto)
