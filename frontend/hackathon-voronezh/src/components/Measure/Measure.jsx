@@ -4,16 +4,19 @@ import ListGroup from "react-bootstrap/ListGroup";
 import logo from "../../images/light_background.svg";
 import Card from "react-bootstrap/Card";
 import {Accordion} from "react-bootstrap";
+import classes from './Measure.module.css'
 
 const Measure = ({closeModal}) => {
+    console.log('modal');
     return (
         <div
-            className="modal show"
+            className={`modal show`}
             style={{
                 display: 'block', position: 'absolute',
-                background: 'gray', zIndex: 3
+                 zIndex: 3
             }}
         >
+            <div className={classes.background}/>
             <style type="text/css">
                 {`
                     .btn-blue {
@@ -31,7 +34,7 @@ const Measure = ({closeModal}) => {
                 `
                 }
             </style>
-            <Modal.Dialog>
+            <Modal.Dialog style={{zIndex:2}}>
                 <Modal.Header closeButton onClick={() => closeModal()}>
                     <Modal.Title>Название мероприятия</Modal.Title>
                 </Modal.Header>
