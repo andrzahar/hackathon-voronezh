@@ -1,4 +1,4 @@
-import classes from "./CalendarFooter.module.css";
+import classes from './CalendarFooter.module.css';
 
 const CalendarFooter = () => {
   return (

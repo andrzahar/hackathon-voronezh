@@ -1,16 +1,16 @@
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { useDispatch } from "react-redux";
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { useDispatch } from 'react-redux';
 
-import classes from "./Authorization.module.css";
-import Measure from "../Measure/Measure";
+import classes from './Authorization.module.css';
+import Measure from '../Measure/Measure';
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
   const [modal, setModal] = useState(true);
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const closeModal = () => {
@@ -18,7 +18,7 @@ const Authorization = () => {
   };
 
   const checkAuthUser = () => {
-    console.log("log");
+    console.log('log');
     // if (login != null && password != null) {
     //     dispatch(enterUser(login, password));
     // }
@@ -31,16 +31,16 @@ const Authorization = () => {
     // }
   };
 
-  const onChangePassword = (e) => {
+  const onChangePassword = e => {
     setPassword(e.currentTarget.value);
   };
 
-  const onChangeLogin = (e) => {
+  const onChangeLogin = e => {
     setLogin(e.currentTarget.value);
   };
 
   const togglePage = () => {
-    setAuth((prev) => !prev);
+    setAuth(prev => !prev);
   };
 
   return (
@@ -65,12 +65,7 @@ const Authorization = () => {
             <Form className={classes.form}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Логин</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Введите логин"
-                  value={login}
-                  onChange={onChangeLogin}
-                />
+                <Form.Control type="text" placeholder="Введите логин" value={login} onChange={onChangeLogin} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Пароль</Form.Label>
@@ -88,14 +83,8 @@ const Authorization = () => {
             <div className={classes.infoCard_signIn}>
               <div className={classes.textWrapper}>
                 <h2 className={classes.welcomeTitle}>Приветствие</h2>
-                <p className={classes.text}>
-                  Какой-то текст про то как классно будет если ты войдешь
-                </p>
-                <Button
-                  onClick={togglePage}
-                  className={classes.btnTel}
-                  variant="red"
-                >
+                <p className={classes.text}>Какой-то текст про то как классно будет если ты войдешь</p>
+                <Button onClick={togglePage} className={classes.btnTel} variant="red">
                   Зарегистрироваться
                 </Button>
               </div>
@@ -108,14 +97,8 @@ const Authorization = () => {
             <div className={classes.infoCard_signIn}>
               <div className={classes.textWrapper}>
                 <h2 className={classes.welcomeTitle}>Приветствие</h2>
-                <p className={classes.text}>
-                  Какой-то текст про то как классно будет если ты войдешь
-                </p>
-                <Button
-                  onClick={togglePage}
-                  className={classes.btnTelIn}
-                  variant="blue"
-                >
+                <p className={classes.text}>Какой-то текст про то как классно будет если ты войдешь</p>
+                <Button onClick={togglePage} className={classes.btnTelIn} variant="blue">
                   Войти
                 </Button>
               </div>
@@ -123,12 +106,7 @@ const Authorization = () => {
             <Form className={classes.form}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Логин</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Введите логин"
-                  value={login}
-                  onChange={onChangeLogin}
-                />
+                <Form.Control type="text" placeholder="Введите логин" value={login} onChange={onChangeLogin} />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -140,11 +118,7 @@ const Authorization = () => {
                   onChange={onChangePassword}
                 />
               </Form.Group>
-              <Button
-                variant="blue"
-                onClick={regAuthUser}
-                className={classes.btnTel}
-              >
+              <Button variant="blue" onClick={regAuthUser} className={classes.btnTel}>
                 Зарегистрироваться
               </Button>
             </Form>

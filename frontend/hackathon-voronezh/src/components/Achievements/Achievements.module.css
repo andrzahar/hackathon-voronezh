@@ -1,5 +1,6 @@
 .container {
     width: 100%;
+    padding: 15px;
 }
 
 .title{
@@ -10,10 +11,6 @@
     font-size: 36px;
     color: var(--color--blue);
     margin: 50px;
-}
-
-.item {
-    margin: 0 15px;
 }
 
 .item + .item {
