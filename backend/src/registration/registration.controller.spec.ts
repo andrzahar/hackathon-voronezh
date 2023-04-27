@@ -10,7 +10,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from '../auth/auth.guard';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { RegistrationSportsmanDto } from './dto/registration-sportsman.dto';
+import { RegistrationDto } from './dto/registration.dto';
 import { Model } from 'mongoose';
 import { UserDocument } from '../schemas/user.schema';
 import { RegistrationService } from './registration.service';
@@ -53,7 +53,7 @@ describe('RegistrationController', () => {
   });
 
   it('POST /api/registration code 200', async () => {
-    const post: RegistrationSportsmanDto = new RegistrationSportsmanDto();
+    const post: RegistrationDto = new RegistrationDto();
     post.login = 'login4';
     post.password = 'password4';
     post.phone = '+79554510703';
@@ -67,7 +67,7 @@ describe('RegistrationController', () => {
   });
 
   it('POST /api/registration code 409', async () => {
-    const post: RegistrationSportsmanDto = new RegistrationSportsmanDto();
+    const post: RegistrationDto = new RegistrationDto();
     post.login = 'login';
     await request(app.getHttpServer())
       .post('/api/registration')

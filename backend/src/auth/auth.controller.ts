@@ -2,14 +2,13 @@ import {
   Body,
   Controller,
   HttpCode,
-  HttpException,
   HttpStatus,
-  Post,
-} from '@nestjs/common';
+  Post, Redirect
+} from "@nestjs/common";
 import { AuthService } from './auth.service';
-import { SignInDto } from './dto/signIn.dto';
+import { SignInDto } from './dto/sign-in.dto';
 import { Public } from './auth.guard';
-import { validateOrReject } from 'class-validator';
+import { AuthMethodNotAllowed } from "../error/auth-error.exception";
 
 @Controller('api/auth')
 export class AuthController {
@@ -18,21 +17,13 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post()
   @Public()
-  async signIn(@Body() signInDTO: SignInDto) {
+  @Redirect('api/user/info')
+  async signIn(@Body() dto: SignInDto) {
     try {
-      await validateOrReject(signInDTO);
-      return await this.authService.signIn(signInDTO);
+      console.table(dto)
+      return await this.authService.signIn(dto);
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.METHOD_NOT_ALLOWED,
-          error: 'Ошибка не удалось выполнить вставку данных',
-        },
-        HttpStatus.METHOD_NOT_ALLOWED,
-        {
-          cause: error,
-        },
-      );
+      throw new AuthMethodNotAllowed();
     }
   }
 }
