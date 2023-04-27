@@ -9,13 +9,24 @@ import Form from "react-bootstrap/Form";
 import {useState} from "react";
 import avatar from '../../images/avatar.webp'
 import account from '../../images/account.svg'
+import {useSelector} from "react-redux";
 
 const EditModal = ({closeModal}) => {
-    const [nameValue, setNameValue]=useState('Роман');
-    const [snValue, setSnValue]=useState('Адамович');
-    const [patrValue, setPatrValue]=useState('Николаевич');
-    const [pasValue, setPasValue]=useState('1232142');
-    const [omsValue, setOmsValue]=useState('1232142');
+
+    const sportsmanInfo=useSelector(state=>state.sportsman);
+    const userInfo=useSelector(state=>state.user);
+
+    const [nameValue, setNameValue]=useState(userInfo.name);
+    const [snValue, setSnValue]=useState(userInfo.surName);
+    const [patrValue, setPatrValue]=useState(userInfo.patronymic);
+    const [phoneValue, setPhoneValue]=useState(userInfo.phone);
+    const [pasValue, setPasValue]=useState(sportsmanInfo.passport.number);
+    const [pasOwnerValue, setPasOwnerValue]=useState(sportsmanInfo.passport.number);
+    const [pasIssueValue, setPasIssueValue]=useState(sportsmanInfo.passport.number);
+    const [pasCompanyCodeValue, setCompanyCodeValue]=useState(sportsmanInfo.passport.number);
+    const [pasBValue, setPasBValue]=useState(sportsmanInfo.passport.number);
+
+    const [omsValue, setOmsValue]=useState(sportsmanInfo.oms);
 
     const avatar = null;
 
@@ -78,7 +89,32 @@ const EditModal = ({closeModal}) => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
+                            <Form.Label>Телефон</Form.Label>
+                            <Form.Control value={phoneValue} onChange={(e)=>setPhoneValue(e.currentTarget.value)}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
                             <Form.Label>Серия номер паспорта</Form.Label>
+                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Кем выдан</Form.Label>
+                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Дата выдачи</Form.Label>
+                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Код подразделения</Form.Label>
+                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Регистрация</Form.Label>
                             <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
                         </Form.Group>
 

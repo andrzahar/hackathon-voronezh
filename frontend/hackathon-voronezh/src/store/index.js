@@ -5,6 +5,7 @@ import { administratorReducer } from "./reducers/administrator";
 import { representativeReducer } from "./reducers/representative";
 import { partnerReducer } from "./reducers/partner";
 import { userReducer } from "./reducers/userReducer";
+import {eventReducer} from "./reducers/eventReducer";
 
 export const rootReducer = combineReducers({
   user: userReducer,
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
   administrator: administratorReducer,
   representative: representativeReducer,
   partner: partnerReducer,
+  event: eventReducer
 });
 
 export const store = createStore(rootReducer);
