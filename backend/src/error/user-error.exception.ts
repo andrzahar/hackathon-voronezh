@@ -1,5 +1,11 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 
+export class UserErrorMailException extends HttpException {
+  constructor() {
+    super('This mail is already taken, field: user', HttpStatus.CONFLICT);
+  }
+}
+
 export class UserErrorLoginException extends HttpException {
   constructor() {
     super('This login is already taken, field: user', HttpStatus.CONFLICT);

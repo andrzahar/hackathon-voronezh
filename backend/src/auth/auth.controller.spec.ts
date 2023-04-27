@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from './auth.controller';
-import { SignInDto } from './dto/signIn.dto';
+import { SignInDto } from './dto/sign-in.dto';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AuthService } from './auth.service';
@@ -50,8 +50,8 @@ describe('AuthController', () => {
 
   it('/api/auth Sign in user', () => {
     const post: SignInDto = new SignInDto();
-    post.login = 'login';
-    post.password = 'password';
+    post.mail = 'mail';
+    post.password = 'mail';
     return request(app.getHttpServer())
       .post('/api/auth')
       .send(post)
@@ -60,7 +60,7 @@ describe('AuthController', () => {
 
   it('/api/auth Error sign user', () => {
     const post: SignInDto = new SignInDto();
-    post.login = 'login';
+    post.mail = 'login';
     return request(app.getHttpServer())
       .post('/api/auth')
       .send(post)

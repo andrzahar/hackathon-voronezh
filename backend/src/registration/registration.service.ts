@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
-import { RegistrationSportsmanDto } from './dto/registration-sportsman.dto';
+import { RegistrationDto } from './dto/registration.dto';
 import { UserDocument } from "../schemas/user.schema";
 
 @Injectable()
@@ -11,7 +11,7 @@ export class RegistrationService {
     private jwtService: JwtService,
   ) {}
 
-  public async signOn(registrationDTO: RegistrationSportsmanDto) {
+  public async signOn(registrationDTO: RegistrationDto) {
     const user = await this.usersService.create(registrationDTO);
     return await this.jwtService.signAsync(this.createPayload(user));
   }

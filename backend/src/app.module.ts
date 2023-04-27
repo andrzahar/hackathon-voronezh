@@ -8,6 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
 import { MongooseConfigService } from './config/MongooseConfigService';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { MongooseConfigService } from './config/MongooseConfigService';
       secret: process.env.SECRET,
       signOptions: { expiresIn: '1 d' },
     }),
+    EventsModule,
   ],
   providers: [
     {
