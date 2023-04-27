@@ -1,0 +1,10 @@
+.cardBtn{
+    margin-top: 20px;
+}
+.calendarBody{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding-bottom: 100px;
+}
