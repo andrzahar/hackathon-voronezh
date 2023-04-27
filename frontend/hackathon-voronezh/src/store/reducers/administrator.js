@@ -1,7 +1,7 @@
 const initialState = {};
 
 export const administratorReducer = (action, state = initialState) => {
-  switch (action.type) {
+  switch (action?.type) {
     default:
       return state;
   }
