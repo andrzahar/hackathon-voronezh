@@ -5,6 +5,25 @@ info:
 servers:
   - url: http://91.142.72.178:5000/
 paths:
+  /registration:
+    post:
+      summary: Add a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                description: userKey
+                type: string
+        '405':
+          description: Invalid input
   /auth:
     post:
       summary: Auth user
@@ -24,23 +43,50 @@ paths:
                 type: string
         '405':
           description: Invalid input
-  /preferences:
+  /user:
     get:
-      summary: Get all preferences
+      summary: get user info
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                description: userKey
+                type: string
+        '405':
+          description: Invalid input
+          
+  /events:
+    get:
+      summary: get events for this user
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Preference'
+                  $ref: '#/components/schemas/Event'
         '405':
           description: Invalid input
-  /user/preferences:
+          
+  /event:
     post:
-      summary: Set general preferences of user
+      summary: post event
       parameters:
         - name: userKey
           in: header
@@ -51,93 +97,146 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Preference'
+              $ref: '#/components/schemas/Event'
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
         '405':
           description: Invalid input
-  /user/adventure:
+          
+  /confirmEvent:
     post:
-      summary: add user adventure
       parameters:
         - name: userKey
           in: header
           required: true
           schema:
             type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstFlight:
-                  type: string
-                secondFlight:
-                  type: string
+        - name: eventId
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
+        '405':
+          description: Invalid input
+          
+  /sportsman/info:
+    get:
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Adventure'
+                $ref: '#/components/schemas/Sportsman'
         '405':
           description: Invalid input
-  /user/adventure/preferences:
     post:
-      summary: set user preferences for adventure
       parameters:
         - name: userKey
           in: header
           required: true
           schema:
             type: string
-        - name: adventureId
-          in: header
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Preference'
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sportsman'
         '405':
           description: Invalid input
-  /user/adventure/route:
+          
+  /representative/info:
     get:
-      summary: get route
       parameters:
         - name: userKey
           in: header
           required: true
           schema:
             type: string
-        - name: adventureId
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative'
+        '405':
+          description: Invalid input
+          
+  /partner/info:
+    get:
+      parameters:
+        - name: userKey
           in: header
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Partner'
         '405':
           description: Invalid input
+          
+  /event/analytics:
+    get:
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: eventId
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rating'
+        '405':
+          description: Invalid input
+    
 
 components:
   schemas:
-    UserType:
+    UserRegistration:
+      type: object
+      properties:
+        login:
+          type: string
+        telephone:
+          type: string
+        password:
+          type: string
+          format: password
+        name:
+          type: string
+    UserRole:
       type: string
-      enun:
+      enum:
+        - none
         - sportsman
         - representative
         - administrator
@@ -204,15 +303,45 @@ components:
           type: string
         phone:
           type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+    Passport:
+      type: object
+      properties:
+        number:
+          type: string
+        nameOwner:
+          type: string
+        companyName:
+          type: string
+        issueDate: 
+          type: string
+        companyCode: 
+          type: string
+        birthplace: 
+          type: string
+    Sportsman:
+      type: object
+      properties:
         birthday:
           type: string
           format: date
-        type:
-          $ref: '#/components/schemas/UserType'
-        isCompany:
-          type: boolean
         sex:
           $ref: '#/components/schemas/Sex'
+        passport:
+          $ref: '#/components/schemas/Passport'
+        oms:
+          type: string
+    Representative:
+      type: object
+      properties:
+        region:
+          type: string
+    Partner:
+      type: object
+      properties:
+        companyName:
+          type: string
     RatingPosition:
       type: object
       properties:
