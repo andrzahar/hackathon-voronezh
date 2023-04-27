@@ -7,7 +7,3 @@ export async function fetchAuth(credentials) {
 export async function fetchRegister(data) {
     return apiPost('/registration', data);
 }
-
-export async function fetchUserInfo(data) {
-    return apiPost('/user', data);
-}
