@@ -17,7 +17,7 @@ export const BASE_ROUTES = [
   },
   {
     path: ROUTE_ACHIEVEMENTS,
-    name: 'Личный кабинет',
+    name: 'Достижения',
     Element: Achievements,
   },
 ];
