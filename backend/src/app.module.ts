@@ -11,11 +11,13 @@ import { MongooseConfigService } from './config/MongooseConfigService';
 import { EventsModule } from './events/events.module';
 import { PassportModule } from './passport/passport.module';
 import { SportsmanModule } from './sportsman/sportsman.module';
+import { RegistrationModule } from "./registration/registration.module";
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
+    RegistrationModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useClass: MongooseConfigService,

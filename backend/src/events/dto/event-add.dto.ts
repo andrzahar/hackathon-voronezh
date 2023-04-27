@@ -5,9 +5,6 @@ import { Status } from "../../schemas/event.schema";
 import { Transform } from "class-transformer";
 
 export class EventAddDto {
-  @IsString()
-  @IsNotEmpty()
-  id: string;
   @IsDate()
   @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   time_end: Date;
@@ -15,7 +12,7 @@ export class EventAddDto {
   @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   time_start: Date;
   @Prop({ required: true, ref: 'User' })
-  members?: Types.ObjectId[];
+  members: Types.ObjectId[];
   @Prop({ required: true, ref: 'User' })
   creator: Types.ObjectId;
   @Prop({required : true, enum : Status, default: Status.Upcoming})

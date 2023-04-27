@@ -23,5 +23,4 @@ export class EventsService {
     return event.save()
   }
 
-
 }

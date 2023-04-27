@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, MethodNotAllowedException, Post, UseGuards } from "@nestjs/common";
 import { EventsService } from "./events.service";
 import { Roles } from "../auth/roles-auth.decorator";
 import { RolesGuard } from "../auth/roles.guard";
@@ -13,12 +13,14 @@ export class EventsController {
      return this.eventsService.getAll()
   }
 
-
-  //TODO: поменять роли на соответствующие
-  @Post('/create')
-  @Roles('Администратор ФСП', 'Спортсмен')
+  @Post()
+  @Roles('редставитель региональной Фередрации', 'Партнёр')
   @UseGuards(RolesGuard)
   public async createEvent(@Body() dto: EventAddDto) {
-     return await this.eventsService.create(dto)
+     try {
+       return await this.eventsService.create(dto)
+     } catch {
+       throw new MethodNotAllowedException()
+     }
   }
 }

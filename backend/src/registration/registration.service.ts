@@ -3,7 +3,6 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { RegistrationDto } from './dto/registration.dto';
 import { UserDocument } from "../schemas/user.schema";
-import { validateOrReject } from "class-validator";
 
 @Injectable()
 export class RegistrationService {
