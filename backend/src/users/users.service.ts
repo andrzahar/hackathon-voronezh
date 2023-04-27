@@ -37,7 +37,7 @@ export class UsersService {
         login: dto.login,
         name: dto.name,
         phone: dto.phone
-      }).populate('passport', 'oms'),
+      }),
       this.usersModel.findOne({ login: dto.login }),
       this.usersModel.findOne({ phone: dto.phone }),
     ]);

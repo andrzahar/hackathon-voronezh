@@ -21,7 +21,7 @@ export class SportsmanService {
     if(userId===null) {
       throw new SportsmanErrorExceptionInfoNotFound()
     }
-    return this.sportsmanModel.find({user: new Types.ObjectId(userId)}).exec()
+    return this.sportsmanModel.find({user: new Types.ObjectId(userId)}).populate('passport').exec()
   }
 
   public async create(dto: SportsmanCreateDto) {
