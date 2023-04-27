@@ -58,13 +58,13 @@ paths:
           content:
             application/json:
               schema:
-                description: userKey
-                type: string
+                $ref: '#/components/schemas/User'
         '405':
           description: Invalid input
           
   /user/role:
     post:
+      summary: admin set role for user
       parameters:
         - name: userKey
           in: header
@@ -243,15 +243,11 @@ components:
     UserRegistration:
       type: object
       properties:
-        login:
-          type: string
-        telephone:
+        mail:
           type: string
         password:
           type: string
           format: password
-        name:
-          type: string
     UserRole:
       type: string
       enum:
