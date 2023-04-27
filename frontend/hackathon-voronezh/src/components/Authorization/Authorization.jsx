@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 
 import classes from './Authorization.module.css';
+import {authLogin, authRegistration} from "../../store/services/authLogin";
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
@@ -16,18 +17,22 @@ const Authorization = () => {
     setModal(false);
   };
 
-  const checkAuthUser = () => {
+  const checkAuthUser = async () => {
+    const userKey = await authLogin({login, password});
+    console.log(userKey);
     console.log('log');
     // if (login != null && password != null) {
     //     dispatch(enterUser(login, password));
     // }
   };
 
-  const regAuthUser = () => {
+  const regAuthUser = async () => {
+    const userKey = await authRegistration({ login, password });
     // if (login != null && password != null) {
     //     dispatch(createUser(login, password));
     //     setModal(true);
     // }
+    console.log(userKey);
   };
 
   const onChangePassword = e => {

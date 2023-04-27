@@ -1,9 +1,9 @@
 import { apiPost } from './apiFunction';
 
-export async function fetchAuth(credentials) {
+export async function fetchLogin(credentials) {
     return apiPost('/auth', credentials);
 }
 
-export async function fetchRegister(data) {
-    return apiPost('/registration', data);
+export async function fetchRegister(credentials) {
+    return apiPost('/registration', credentials);
 }
