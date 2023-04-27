@@ -20,7 +20,11 @@ export class User {
   @Prop({required: true})
   login: string;
   @Prop({required: true})
-  name: string;
+  firstname: string;
+  @Prop({required: true})
+  surname: string;
+  @Prop({required: true})
+  patronymic: string;
   @Prop({required: true})
   @IsPhoneNumber()
   phone: string;
