@@ -63,6 +63,25 @@ paths:
         '405':
           description: Invalid input
           
+  /user/role:
+    post:
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: role
+          in: header
+          required: true
+          schema:
+            $ref: '#/components/schemas/UserRole'
+      responses:
+        '200':
+          description: Successful operation
+        '405':
+          description: Invalid input
+          
   /events:
     get:
       summary: get events for this user
@@ -297,7 +316,11 @@ components:
       properties:
         id:
           type: string
-        name:
+        firstname:
+          type: string
+        surname:
+          type: string
+        patronymic:
           type: string
         mail:
           type: string
