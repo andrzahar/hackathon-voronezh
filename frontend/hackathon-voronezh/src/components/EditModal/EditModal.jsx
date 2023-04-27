@@ -6,10 +6,25 @@ import Card from "react-bootstrap/Card";
 import {Accordion} from "react-bootstrap";
 import classes from './EditModal.module.css'
 import Form from "react-bootstrap/Form";
+import {useState} from "react";
+import avatar from '../../images/avatar.webp'
+import account from '../../images/account.svg'
 
 const EditModal = ({closeModal}) => {
-    console.log('modal');
+    const [nameValue, setNameValue]=useState('Роман');
+    const [snValue, setSnValue]=useState('Адамович');
+    const [patrValue, setPatrValue]=useState('Николаевич');
+    const [pasValue, setPasValue]=useState('1232142');
+    const [omsValue, setOmsValue]=useState('1232142');
+
+    const avatar = null;
+
+    const changeImage=()=>{
+
+    }
+
     return (
+
         <div
             className={`modal show`}
             style={{
@@ -42,30 +57,41 @@ const EditModal = ({closeModal}) => {
 
                 <Modal.Body>
                     <Form>
+                        <div className={classes.personal_img} onClick={()=>changeImage()}>
+                            <img className={classes.avatar}
+                                 src={avatar ? avatar : account}
+                            />
+                        </div>
                         <Form.Group className="mb-3">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
+                            <Form.Label>Фамилия</Form.Label>
+                            <Form.Control value={snValue} onChange={(e)=>setSnValue(e.currentTarget.value)}/>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                        <Form.Group className="mb-3">
+                            <Form.Label>Имя</Form.Label>
+                            <Form.Control value={nameValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Отчество</Form.Label>
+                            <Form.Control value={patrValue} onChange={(e)=>setPatrValue(e.currentTarget.value)}/>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Серия номер паспорта</Form.Label>
+                            <Form.Control value={pasValue} onChange={(e)=>setPasValue(e.currentTarget.value)}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>ПОЛИС</Form.Label>
+                            <Form.Control value={omsValue} onChange={(e)=>setOmsValue(e.currentTarget.value)}/>
+                        </Form.Group>
                     </Form>
 
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="darkGrey" onClick={() => closeModal()}>Закрыть</Button>
+                    <Button variant="darkGrey" onClick={() => closeModal()}>Изменить</Button>
                 </Modal.Footer>
             </Modal.Dialog>
         </div>
