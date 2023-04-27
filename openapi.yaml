@@ -135,6 +135,13 @@ paths:
 
 components:
   schemas:
+    UserType:
+      type: string
+      enun:
+        - sportsman
+        - representative
+        - administrator
+        - partner
     Sex:
       type: string
       enum:
@@ -173,6 +180,10 @@ components:
           format: date-time
         status:
           $ref: '#/components/schemas/EventStatus'
+        criterions:
+          type: array
+          items:
+            type: string
     EventMember:
       type: object
       properties:
@@ -196,17 +207,12 @@ components:
         birthday:
           type: string
           format: date
+        type:
+          $ref: '#/components/schemas/UserType'
         isCompany:
           type: boolean
         sex:
           $ref: '#/components/schemas/Sex'
-    Criterion:
-      type: object
-      properties:
-        criterions:
-          type: array
-          items:
-            type: string
     RatingPosition:
       type: object
       properties:
@@ -218,3 +224,10 @@ components:
           type: string
         whatUnliked:
           type: string
+    Rating:
+      type: object
+      properties:
+        eventId:
+          type: string
+        rating:
+          $ref: '#/components/schemas/RatingPosition'
