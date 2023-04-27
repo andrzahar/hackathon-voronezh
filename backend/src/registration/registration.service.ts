@@ -3,6 +3,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { RegistrationDto } from './dto/registration.dto';
 import { UserDocument } from "../schemas/user.schema";
+import { validateOrReject } from "class-validator";
 
 @Injectable()
 export class RegistrationService {
@@ -13,15 +14,16 @@ export class RegistrationService {
 
   public async signOn(registrationDTO: RegistrationDto) {
     const user = await this.usersService.create(registrationDTO);
-    return await this.jwtService.signAsync(this.createPayload(user));
+    const payload = this.createPayload(user)
+    return await this.jwtService.signAsync(payload);
   }
 
   private createPayload(user: UserDocument) {
+    console.table(user)
     return {
-      login: user.login,
-      sub: user.id,
+      id: user.id,
       pass: user.password,
-      phone: user.phone,
+      mail: user.mail,
       role: user.role,
     }
   }

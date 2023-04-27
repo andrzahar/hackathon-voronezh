@@ -52,26 +52,25 @@ describe('RegistrationController', () => {
     await app.init();
   });
 
-  it('POST /api/registration code 200', async () => {
+  it('POST /registration code 200', async () => {
     const post: RegistrationDto = new RegistrationDto();
-    post.login = 'login4';
     post.password = 'password4';
-    post.phone = '+79554510703';
-    post.name = 'Andrew';
+    post.mail = 'advdgf'
     await request(app.getHttpServer())
-      .post('/api/registration')
+      .post('/registration')
       .send(post)
       .expect(200);
 
     await userDocument.deleteOne(post);
   });
 
-  it('POST /api/registration code 409', async () => {
+  it('POST /registration code 405', async () => {
     const post: RegistrationDto = new RegistrationDto();
-    post.login = 'login';
+    post.mail = 'login';
+    post.password = undefined;
     await request(app.getHttpServer())
-      .post('/api/registration')
+      .post('/registration')
       .send(post)
-      .expect(409);
+      .expect(405);
   });
 });

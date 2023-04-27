@@ -48,12 +48,12 @@ describe('AuthController', () => {
     await app.init();
   });
 
-  it('/api/auth Sign in user', () => {
+  it('/auth Sign in user', () => {
     const post: SignInDto = new SignInDto();
     post.mail = 'mail';
     post.password = 'mail';
     return request(app.getHttpServer())
-      .post('/api/auth')
+      .post('/auth')
       .send(post)
       .expect(200);
   });
@@ -62,7 +62,7 @@ describe('AuthController', () => {
     const post: SignInDto = new SignInDto();
     post.mail = 'login';
     return request(app.getHttpServer())
-      .post('/api/auth')
+      .post('/auth')
       .send(post)
       .expect(405);
   });

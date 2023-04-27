@@ -2,7 +2,6 @@ import {
   Body,
   Controller,
   HttpCode,
-  HttpException,
   HttpStatus,
   Post,
 } from '@nestjs/common';
@@ -12,7 +11,7 @@ import { Public } from '../auth/auth.guard';
 import { validateOrReject } from 'class-validator';
 import { RegistrationMethodNotAllow } from "../error/registration-error.exception";
 
-@Controller('api/registration')
+@Controller('registration')
 export class RegistrationController {
   constructor(private registrationService: RegistrationService) {}
 

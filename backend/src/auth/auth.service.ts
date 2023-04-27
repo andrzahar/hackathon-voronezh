@@ -23,7 +23,6 @@ export class AuthService {
 
   private createPayload(user: UserDocument) {
     return {
-      login: user.login,
       id: user.id,
       pass: user.password,
       phone: user.phone,

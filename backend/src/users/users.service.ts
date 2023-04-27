@@ -32,26 +32,9 @@ export class UsersService {
     await validateOrReject(dto);
     const user = plainToClass(this.usersModel, dto);
 
-    console.table(user)
 
-    const [existing, existingLogin, existingPhone] = await Promise.all([
-      this.usersModel.findOne({
-        login: dto.login,
-        name: dto.name,
-        phone: dto.phone
-      }),
-      this.usersModel.findOne({ login: dto.login }),
-      this.usersModel.findOne({ phone: dto.phone }),
-    ]);
+    const existing: UserDocument = await this.usersModel.findOne({ mail: dto.mail, });
 
-
-    if (existingLogin) {
-      throw new UserErrorLoginException();
-    }
-
-    if (existingPhone) {
-      throw new UserErrorPhoneException();
-    }
 
     if (existing) {
       return existing;
