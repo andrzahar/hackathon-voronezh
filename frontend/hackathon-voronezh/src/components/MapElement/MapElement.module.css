@@ -12,3 +12,9 @@
 path:hover{
     fill: var(--color--darkGrey);
 }
+
+@media screen and (width<450px ){
+    .mapItem{
+        height: 250px;
+    }
+}

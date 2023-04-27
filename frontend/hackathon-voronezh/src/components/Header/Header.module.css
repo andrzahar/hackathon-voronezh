@@ -20,4 +20,8 @@
     cursor: pointer;
 }
 
-
+@media screen and (width<450px){
+    .titleGroup{
+        padding: 0;
+    }
+}
