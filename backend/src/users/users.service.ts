@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Role, User, UserDocument } from "../schemas/user.schema";
+import { User, UserDocument } from "../schemas/user.schema";
 import { Model, Types } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 import {
@@ -32,12 +32,14 @@ export class UsersService {
     await validateOrReject(dto);
     const user = plainToClass(this.usersModel, dto);
 
+    console.table(user)
+
     const [existing, existingLogin, existingPhone] = await Promise.all([
       this.usersModel.findOne({
         login: dto.login,
         name: dto.name,
         phone: dto.phone
-      }).populate('passport', 'oms'),
+      }),
       this.usersModel.findOne({ login: dto.login }),
       this.usersModel.findOne({ phone: dto.phone }),
     ]);
