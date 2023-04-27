@@ -1,0 +1,9 @@
+.map{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.mapTitle{
+    margin-top: 100px;
+    text-align: center;
+}
