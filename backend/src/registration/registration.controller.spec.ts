@@ -67,7 +67,6 @@ describe('RegistrationController', () => {
   it('POST /registration code 405', async () => {
     const post: RegistrationDto = new RegistrationDto();
     post.mail = 'login';
-    post.password = undefined;
     await request(app.getHttpServer())
       .post('/registration')
       .send(post)

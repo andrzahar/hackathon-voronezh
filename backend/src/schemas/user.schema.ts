@@ -17,13 +17,13 @@ export class User {
   id: Types.ObjectId;
   @Prop({required: true})
   password: string;
-  @Prop({required: false})
+  @Prop({required: true, default: 'null'})
   firstname: string;
-  @Prop({required: false})
+  @Prop({required: true, default: 'null'})
   surname: string;
-  @Prop({required: false})
+  @Prop({required: true, default: 'null'})
   patronymic: string;
-  @Prop({required: false})
+  @Prop({required: true, default: 'null'})
   @IsPhoneNumber()
   phone: string;
   @Prop({enum: Role, default: Role.NONE})
