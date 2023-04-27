@@ -28,6 +28,7 @@ html {
 body {
     line-height: 1;
     background-color: var(--color--grey);
+    font-family: 'JetBrains Mono', monospace;
 }
 ol, ul {
     list-style: none;
@@ -43,8 +44,4 @@ q:before, q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
-
-body {
-    font-family: 'JetBrains Mono', monospace;
 }
