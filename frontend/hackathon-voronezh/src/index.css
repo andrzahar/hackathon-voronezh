@@ -45,6 +45,6 @@ table {
     border-spacing: 0;
 }
 
-*{
-    font-family: "JetBrains Mono";
+body {
+    font-family: 'JetBrains Mono', monospace;
 }
