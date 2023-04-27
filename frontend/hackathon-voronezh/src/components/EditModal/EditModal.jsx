@@ -38,7 +38,7 @@ const EditModal = ({ closeModal }) => {
       style={{
         display: 'block',
         position: 'absolute',
-        zIndex: 3,
+        zIndex: 3
       }}
     >
       <div className={classes.background} />
