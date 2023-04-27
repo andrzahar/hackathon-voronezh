@@ -1,6 +1,6 @@
 const initialState = {};
 
-export const sportsmanReducer = (action, state = initialState) => {
+export const sportsmanReducer = (state = initialState, action) => {
   switch (action?.type) {
     default:
       return state;

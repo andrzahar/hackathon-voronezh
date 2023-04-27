@@ -3,10 +3,10 @@ const initialState = {
     surName: undefined,
     patronymic: undefined,
     login: undefined,
-    token: undefined,
+    token: 'undefined',
 };
 
-export const userReducer = (action, state = initialState) => {
+export const userReducer = (state = initialState, action) => {
     switch (action?.type) {
         default:
             return state;

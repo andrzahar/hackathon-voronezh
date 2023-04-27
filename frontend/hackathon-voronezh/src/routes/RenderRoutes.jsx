@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getRoutesByAuth } from "./common/getRoutesByAuth";
 import { ROUTE_AUTH, ROUTE_MAIN_CONTAINER } from "./routes";
 import { getAuthUser } from "../store/selectors/authSelector";
+import {Layout} from "../components/core/Layout";
 
 const RenderRoutesWithoutStore = ({ user }) => {
   // TODO: поправить юзера
@@ -16,12 +17,14 @@ const RenderRoutesWithoutStore = ({ user }) => {
   );
 
   return (
+      <Layout>
     <Routes>
       {routesByAuth.map((item) => (
         <Route key={item.path} path={item.path} element={<item.Element />} />
       ))}
       <Route path="*" element={<Navigate to={baseRoute} replace />} />
     </Routes>
+        </Layout>
   );
 };
 
