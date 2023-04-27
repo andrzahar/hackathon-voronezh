@@ -7,6 +7,4 @@ COPY ./package-lock.json /app/package-lock.json
 
 COPY . /app
 
-COPY . .
-
 RUN npm run dev
