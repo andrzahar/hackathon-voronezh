@@ -61,6 +61,25 @@ paths:
                 $ref: '#/components/schemas/User'
         '405':
           description: Invalid input
+    post:
+      summary: set user info
+      parameters:
+        - name: userKey
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '405':
+          description: Invalid input
           
   /user/role:
     post:
@@ -328,6 +347,8 @@ components:
         mail:
           type: string
         phone:
+          type: string
+        telegram:
           type: string
         role:
           $ref: '#/components/schemas/UserRole'
