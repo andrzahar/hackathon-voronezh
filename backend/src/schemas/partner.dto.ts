@@ -8,6 +8,8 @@ export class Partner {
   id: Types.ObjectId;
   @Prop({required: true})
   companyName: string;
+  @Prop({required:true, ref: 'User'})
+  user: Types.ObjectId;
 
 }
 
