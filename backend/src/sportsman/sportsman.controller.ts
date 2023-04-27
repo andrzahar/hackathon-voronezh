@@ -4,10 +4,10 @@ import {
   SportsmanErrorExceptionInfoMethodNotAllowed,
   SportsmanErrorExceptionUpdate
 } from "../error/sportsman-error.exception";
-import { SportsmanUpdateDto } from "./dto/sportsman-update.dto";
 import { SportsmanCreateDto } from "./dto/sportsman-create.dto";
 import { RolesGuard } from "../auth/roles.guard";
 import { Roles } from "../auth/roles-auth.decorator";
+import { Types } from "mongoose";
 
 @Controller('sportsman')
 export class SportsmanController {
@@ -16,7 +16,7 @@ export class SportsmanController {
   @Get('/info')
   public async info(@Request() req) {
      try {
-       return await this.sportsmanService.info(req.user.id)
+       return await this.sportsmanService.info(new Types.ObjectId(req.user.id))
      } catch {
        throw new SportsmanErrorExceptionInfoMethodNotAllowed()
      }

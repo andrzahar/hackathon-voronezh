@@ -23,3 +23,9 @@ export class UserErrorFoundException extends HttpException {
     super('User not found, field: user', HttpStatus.NOT_FOUND);
   }
 }
+
+export class UserErrorRoleException extends HttpException {
+  constructor() {
+    super('Ошибка в обновлении роли пользователя', HttpStatus.CONFLICT);
+  }
+}
