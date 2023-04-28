@@ -9,8 +9,9 @@ import { Layout } from '../components/core/Layout';
 
 const RenderRoutesWithoutStore = ({ user }) => {
   const routesByAuth = useMemo(() => {
-      console.log(user);
-      return getRoutesByAuth(user)
+    console.log(user);
+
+    return getRoutesByAuth(user);
   }, [user]);
 
   const baseRoute = useMemo(() => (user ? ROUTE_MAIN_CONTAINER : ROUTE_AUTH), [user]);

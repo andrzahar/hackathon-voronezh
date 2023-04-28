@@ -1,59 +1,58 @@
-import { fetchLogin, fetchRegister } from '../api/authApi';
-import {fetchUserInfo} from "../api/userApi";
-import {fetchGetEvent} from "../api/eventApi";
+import { fetchLogin, fetchRegister } from '../../api/authApi';
+import { fetchUserInfo } from '../../api/userApi';
+import { fetchGetEvent } from '../../api/eventApi';
 
 export async function authLogin(credentials) {
-    try {
-        const response = await fetchLogin(credentials);
-        if (response.ok) {
-            const data = await response.json();
-            return `Bearer ${data.jwt_token}`;
-        }
+  try {
+    const response = await fetchLogin(credentials);
 
-        return userKey;
-    } catch (e) {
+    if (response.ok) {
+      const data = await response.json();
 
-        // TODO: доделать обработку ошибок
-        console.log(e);
+      return `Bearer ${data.jwt_token}`;
     }
+
+    return userKey;
+  } catch (e) {
+    // TODO: доделать обработку ошибок
+  }
 }
 
 export async function authRegistration(credentials) {
-    try {
-        const response = await fetchRegister(credentials);
-        const {userKey} = response;
+  try {
+    const response = await fetchRegister(credentials);
+    const { userKey } = response;
 
-        return userKey;
-    } catch (e) {
-        // TODO: доделать обработку ошибок
-        console.log(e);
-    }
+    return userKey;
+  } catch (e) {
+    // TODO: доделать обработку ошибок
+  }
 }
 
 export async function getUserInfo(params) {
-    try {
-        const response = await fetchUserInfo(params);
+  try {
+    const response = await fetchUserInfo(params);
 
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        }
-    } catch (e) {
-        // TODO: доделать обработку ошибок
-        console.log(e);
+    if (response.ok) {
+      const data = await response.json();
+
+      return data;
     }
+  } catch (e) {
+    // TODO: доделать обработку ошибок
+  }
 }
 
 export async function getEvents(params) {
-    try {
-        const response = await fetchGetEvent(params);
+  try {
+    const response = await fetchGetEvent(params);
 
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        }
-    } catch (e) {
-        // TODO: доделать обработку ошибок
-        console.log(e);
+    if (response.ok) {
+      const data = await response.json();
+
+      return data;
     }
+  } catch (e) {
+    // TODO: доделать обработку ошибок
+  }
 }

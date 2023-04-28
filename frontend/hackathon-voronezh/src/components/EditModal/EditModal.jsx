@@ -1,16 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Card from 'react-bootstrap/Card';
-import { Accordion } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import classes from './EditModal.module.css';
-import avatar from '../../images/avatar.webp';
 import account from '../../images/account.svg';
-import logo from '../../images/light_background.svg';
 
 const EditModal = ({ closeModal }) => {
   const sportsmanInfo = useSelector(state => state.sportsman);
@@ -38,7 +33,7 @@ const EditModal = ({ closeModal }) => {
       style={{
         display: 'block',
         position: 'absolute',
-        zIndex: 3
+        zIndex: 3,
       }}
     >
       <div className={classes.background} />

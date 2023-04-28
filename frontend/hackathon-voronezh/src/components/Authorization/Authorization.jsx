@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import classes from './Authorization.module.css';
 import { authLogin, authRegistration, getUserInfo } from '../../store/services/services';
-import { setUserInfo, setUserToken } from '../../store/actions/authAction';
+import { setUserInfo } from '../../store/actions/authAction';
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
@@ -31,12 +31,12 @@ const Authorization = () => {
 
   const regAuthUser = async () => {
     const token = await authRegistration({ mail, password });
-    // if (login != null && password != null) {
-    //     dispatch(createUser(login, password));
-    //     setModal(true);
-    // }
 
-    console.log(userKey);
+    if (token) {
+      const info = await getUserInfo({ Authorization: token });
+
+      dispatch(setUserInfo(token, info));
+    }
   };
 
   const onChangePassword = e => {
