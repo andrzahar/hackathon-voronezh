@@ -2,11 +2,11 @@
 
 import { ListGroup } from 'react-bootstrap';
 
-import classes from './Achievements.module.css';
+import classes from './AchievementsListPage.module.css';
 // eslint-disable-next-line import/extensions
 import AchievementsItem from './AchievementsItem';
 
-const Achievements = () => {
+const AchievementsListPage = () => {
   return (
     <div className={classes.container}>
       <h1 className={classes.title}>Достижения</h1>
@@ -17,4 +17,4 @@ const Achievements = () => {
   );
 };
 
-export default Achievements;
+export default AchievementsListPage;

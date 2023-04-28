@@ -1,5 +1,6 @@
 import { fetchLogin, fetchRegister } from '../api/authApi';
 import {fetchUserInfo} from "../api/userApi";
+import {fetchGetEvent} from "../api/eventApi";
 
 export async function authLogin(credentials) {
     try {
@@ -32,6 +33,20 @@ export async function authRegistration(credentials) {
 export async function getUserInfo(params) {
     try {
         const response = await fetchUserInfo(params);
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
+    } catch (e) {
+        // TODO: доделать обработку ошибок
+        console.log(e);
+    }
+}
+
+export async function getEvents(params) {
+    try {
+        const response = await fetchGetEvent(params);
 
         if (response.ok) {
             const data = await response.json();
