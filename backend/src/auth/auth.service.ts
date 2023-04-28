@@ -18,8 +18,10 @@ export class AuthService {
     if (user?.password !== dto.password) {
       throw new UnauthorizedException();
     }
+    const payload = this.jwtService.signAsync(this.createPayload(user))
+
     return {
-      jwt_token: this.jwtService.signAsync(this.createPayload(user))
+      jwt_token: this.jwtService.signAsync(payload)
     };
   }
 
