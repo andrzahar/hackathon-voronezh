@@ -8,8 +8,10 @@ import { getAuthUser } from '../store/selectors/authSelector';
 import { Layout } from '../components/core/Layout';
 
 const RenderRoutesWithoutStore = ({ user }) => {
-  // TODO: поправить юзера
-  const routesByAuth = useMemo(() => getRoutesByAuth(user), [user]);
+  const routesByAuth = useMemo(() => {
+      console.log(user);
+      return getRoutesByAuth(user)
+  }, [user]);
 
   const baseRoute = useMemo(() => (user ? ROUTE_MAIN_CONTAINER : ROUTE_AUTH), [user]);
 

@@ -3,7 +3,7 @@ import {
   ROUTE_ACHIEVEMENTS,
   ROUTE_ACHIEVEMENTS_ITEM,
   ROUTE_APPROVE,
-  ROUTE_AUTH,
+  ROUTE_AUTH, ROUTE_FAQ,
   ROUTE_MAIN_CONTAINER
 } from './routes';
 import Calendar from '../components/Calendar/Calendar';
@@ -12,6 +12,7 @@ import PersonalCabinet from '../components/PersonalCabinet/PersonalCabinet';
 import AchievementsListPage from '../components/Achievements/AchievementsListPage';
 import Approve from "../components/Approve/Approve";
 import AchievementsPage from "../components/Achievements/AchievementsPage";
+import FAQ from "../components/FAQ/FAQ";
 
 export const BASE_ROUTES = [
   {
@@ -28,6 +29,11 @@ export const BASE_ROUTES = [
     path: ROUTE_ACHIEVEMENTS,
     name: 'Лист достижения',
     Element: AchievementsListPage,
+  },
+  {
+    path: ROUTE_FAQ,
+    name: 'Q&A',
+    Element: FAQ,
   },
   {
     path: ROUTE_ACHIEVEMENTS_ITEM,

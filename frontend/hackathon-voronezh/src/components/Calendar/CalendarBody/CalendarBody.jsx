@@ -17,10 +17,14 @@ const CalendarBody = () => {
     const [events, setEvents] = useState([]);
     const token = useSelector(getUserToken);
 
-    useEffect(async () => {
-        const a = await getEvents(token);
-        console.log(a);
-        setEvents(a);
+    useEffect(() => {
+        const fetchData = async () => {
+            const a = await getEvents(token);
+            console.log(a);
+            setEvents(a);
+        }
+
+        fetchData();
     }, []);
 
     return (
@@ -85,7 +89,7 @@ const CalendarItem = ({event}) => {
                     >
                         Подробнее
                     </Button>
-                    {role !== USER_ROLE.SPORTSMAN ?
+                    {role !== USER_ROLE.SPORTSMAN &&
                         <Button
                             className={classes.cardBtn}
                             variant="red"
@@ -93,8 +97,7 @@ const CalendarItem = ({event}) => {
                             href="#"
                         >
                             Изменить данные о мероприятии
-                        </Button> :
-                        <></>
+                        </Button>
                     }
                 </Card.Body>
             </Card>
