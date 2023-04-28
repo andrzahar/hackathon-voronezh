@@ -6,7 +6,7 @@ const initialState = {
     login: 'RNOre',
     token: 'undefined',
     phone: '89877807652',
-    role: 'Спортсменd'//enum
+    role: 'representative'//enum
 };
 
 export const userReducer = (state = initialState, action) => {

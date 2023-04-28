@@ -1,5 +1,5 @@
 import classes from './MainScreenInfo.module.css';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import {useState} from "react";
 
 const MainScreenInfo = () => {

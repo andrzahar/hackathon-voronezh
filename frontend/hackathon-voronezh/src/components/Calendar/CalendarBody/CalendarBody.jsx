@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import {useState} from "react";
 
 import logo from "../../../images/light_background.svg";
 import classes from "./CalendarBody.module.css";
@@ -10,41 +10,41 @@ import {useSelector} from "react-redux";
 import EventEditModal from "../../EditModal/EventEditModal/EventEditModal";
 
 const CalendarBody = () => {
-  return (
-    <div className={classes.calendarBody}>
-      <CalendarItem />
-      <CalendarItem />
-      <CalendarItem />
-      <CalendarItem />
-      <CalendarItem />
-    </div>
-  );
+    return (
+        <div className={classes.calendarBody}>
+            <CalendarItem/>
+            <CalendarItem/>
+            <CalendarItem/>
+            <CalendarItem/>
+            <CalendarItem/>
+        </div>
+    );
 };
 
 const CalendarItem = () => {
-  const [modal, setModal] = useState(false);
-  const [modalEvent, setModalEvent] = useState(false);
+    const [modal, setModal] = useState(false);
+    const [modalEvent, setModalEvent] = useState(false);
 
-  const closeModal = () => {
-    setModal(false);
-  };
+    const closeModal = () => {
+        setModal(false);
+    };
 
-  const closeEventModal=()=>{
-    setModalEvent(false);
-  }
+    const closeEventModal = () => {
+        setModalEvent(false);
+    }
 
-  const event=useSelector(state=>state.event);
-  const role=useSelector(state=>state.user.role);
+    const event = useSelector(state => state.event);
+    const role = useSelector(state => state.user.role);
 
-  console.log(role)
+    console.log(role)
 
-  return (
-    <>
-      {modal ? <Measure closeModal={() => closeModal()} /> : <></>}
-      {modalEvent ? <EventEditModal closeModal={() => closeEventModal()} /> : <></>}
-      <Card style={{ width: "18rem" }}>
-        <style type="text/css">
-          {`
+    return (
+        <>
+            {modal ? <Measure closeModal={() => closeModal()}/> : <></>}
+            {modalEvent ? <EventEditModal closeModal={() => closeEventModal()}/> : <></>}
+            <Card style={{width: "18rem"}}>
+                <style type="text/css">
+                    {`
                     .btn-blue {
                     background-color: var(--color--blue);
                     color: var(--color--grey);
@@ -55,43 +55,43 @@ const CalendarItem = () => {
                     color: var(--color--grey);
                 }
                 `}
-        </style>
-        <Card.Img variant="top" src={logo} />
-        <Card.Body>
-          <Card.Title>Чемпионат России по программированию</Card.Title>
-          <Card.Text>Продуктовое программирование</Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroup.Item>Дата проведения: {event.start} - {event.end}</ListGroup.Item>
-          <ListGroup.Item>
-            Федерация спортивного программирования
-          </ListGroup.Item>
-          <ListGroup.Item>Статус: {event.status}</ListGroup.Item>
-        </ListGroup>
-        <Card.Body>
-          <Button
-            className={classes.cardBtn}
-            variant={"blue"}
-            onClick={() => setModal(true)}
-            href="#"
-          >
-            Подробнее
-          </Button>
-          {role!=='Спортсмен'?
-              <Button
-                  className={classes.cardBtn}
-                  variant={"red"}
-                  onClick={() => setModalEvent(true)}
-                  href="#"
-              >
-                Изменить данные о мероприятии
-              </Button>:
-              <></>
-          }
-        </Card.Body>
-      </Card>
-    </>
-  );
+                </style>
+                <Card.Img variant="top" src={logo}/>
+                <Card.Body>
+                    <Card.Title>Чемпионат России по программированию</Card.Title>
+                    <Card.Text>Продуктовое программирование</Card.Text>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                    <ListGroup.Item>Дата проведения: {event.start} - {event.end}</ListGroup.Item>
+                    <ListGroup.Item>
+                        Федерация спортивного программирования
+                    </ListGroup.Item>
+                    <ListGroup.Item>Статус: {event.status}</ListGroup.Item>
+                </ListGroup>
+                <Card.Body>
+                    <Button
+                        className={classes.cardBtn}
+                        variant={"blue"}
+                        onClick={() => setModal(true)}
+                        href="#"
+                    >
+                        Подробнее
+                    </Button>
+                    {role !== 'sportsman'?
+                        <Button
+                            className={classes.cardBtn}
+                            variant={"red"}
+                            onClick={() => setModalEvent(true)}
+                            href="#"
+                        >
+                            Изменить данные о мероприятии
+                        </Button> :
+                        <></>
+                    }
+                </Card.Body>
+            </Card>
+        </>
+    );
 };
 
 export default CalendarBody;
