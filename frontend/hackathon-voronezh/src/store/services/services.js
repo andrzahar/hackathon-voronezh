@@ -11,6 +11,7 @@ export async function authLogin(credentials) {
 
         return userKey;
     } catch (e) {
+
         // TODO: доделать обработку ошибок
         console.log(e);
     }
