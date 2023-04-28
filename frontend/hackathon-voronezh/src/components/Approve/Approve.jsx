@@ -13,16 +13,16 @@ const Approve = () => {
     <div style={{ width: '100%' }}>
       <style type="text/css">
         {`
-                    .btn-blue {
-                    background-color: var(--color--blue);
-                    color: var(--color--grey);
-                }
-                    
-                    .btn-red {
-                    background-color: var(--color--red);
-                    color: var(--color--grey);
-                }
-                `}
+               .btn-blue {
+               background-color: var(--color--blue);
+               color: var(--color--grey);
+           }
+               
+               .btn-red {
+               background-color: var(--color--red);
+               color: var(--color--grey);
+           }
+           `}
       </style>
       {role === 'representative' ? (
         <div>

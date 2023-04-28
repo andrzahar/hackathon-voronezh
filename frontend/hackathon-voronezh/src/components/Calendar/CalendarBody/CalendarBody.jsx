@@ -12,6 +12,7 @@ import { getUserToken } from '../../../store/selectors/authSelector';
 import { getEvents } from '../../../store/services/services';
 import { USER_ROLE } from '../../core/UserRoleEnum';
 import { getDate } from '../../core/getDate';
+import EventCreateModal from "../../CreateModal/EventCreateModal/EventCreateModal";
 
 const CalendarBody = () => {
   const [events, setEvents] = useState([]);
@@ -39,36 +40,35 @@ const CalendarBody = () => {
 
 const CalendarItem = ({ event }) => {
   const [modal, setModal] = useState(false);
-  const [modalEvent, setModalEvent] = useState(false);
+  const [modalEventEdit, setModalEventEdit] = useState(false);
 
   const closeModal = () => {
     setModal(false);
   };
 
   const closeEventModal = () => {
-    setModalEvent(false);
+    setModalEventEdit(false);
   };
 
-  // const event = useSelector(state => state.event);
   const role = useSelector(state => state.user.role);
 
   return (
     <>
       {modal ? <Measure event={event} closeModal={() => closeModal()} /> : <></>}
-      {modalEvent ? <EventEditModal closeModal={() => closeEventModal()} /> : <></>}
+      {modalEventEdit ? <EventEditModal closeModal={() => closeEventModal()} /> : <></>}
       <Card style={{ width: '18rem' }}>
         <style type="text/css">
           {`
-                    .btn-blue {
-                    background-color: var(--color--blue);
-                    color: var(--color--grey);
-                }
-                    
-                    .btn-red {
-                    background-color: var(--color--red);
-                    color: var(--color--grey);
-                }
-                `}
+                .btn-blue {
+                background-color: var(--color--blue);
+                color: var(--color--grey);
+            }
+                
+                .btn-red {
+                background-color: var(--color--red);
+                color: var(--color--grey);
+            }
+            `}
         </style>
         <Card.Img variant="top" src={logo} />
         <Card.Body>
@@ -89,7 +89,7 @@ const CalendarItem = ({ event }) => {
             Подробнее
           </Button>
           {role !== USER_ROLE.SPORTSMAN && (
-            <Button className={classes.cardBtn} variant="red" onClick={() => setModalEvent(true)} href="#">
+            <Button className={classes.cardBtn} variant="red" onClick={() => setModalEventEdit(true)} href="#">
               Изменить данные о мероприятии
             </Button>
           )}

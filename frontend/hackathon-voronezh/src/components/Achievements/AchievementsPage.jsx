@@ -4,21 +4,18 @@ import cn from 'classnames';
 import classes from './AchievementsListPage.module.css';
 
 const AchievementsPage = () => {
-  const handlerClick = () => {};
-
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column w-100 px-3">
       <h1 className={classes.title}>Чемпионат России по программированию</h1>
-      <h1 className={classes.title}>Чемпионат России по программированию</h1>
-      <ListGroup as="ol" numbered>
+      <h4 className={classes.title}>Список участников</h4>
+      <ListGroup as="ol" numbered className="w-100">
         <ListGroup.Item
           as="li"
-          onClick={handlerClick}
           className={cn('d-flex justify-content-between align-items-start', classes.item)}
         >
           <div className="ms-2 me-auto">
-            <div className="fw-bold mb-2">Чемпионат России по программированию</div>
-            Продуктовое программирование
+            <div className="fw-bold mb-2">Иванов Иван</div>
+            8,7
           </div>
         </ListGroup.Item>
       </ListGroup>
