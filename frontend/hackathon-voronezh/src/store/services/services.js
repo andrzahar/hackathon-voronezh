@@ -69,7 +69,7 @@ export async function createEvents(body, params) {
   }
 }
 
-export async function updateRole(body, params) {
+export async function updateRole( params) {
   try {
     const response = await fetchUserRole(params);
 
