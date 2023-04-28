@@ -11,6 +11,8 @@ const Calendar = () => {
   const role = useSelector(state => state.user.role);
   const id = useSelector(state => state.user._id);
     const [modalEventCreate, setModalEventCreate] = useState(false);
+    const [events, setEvents] = useState([]);
+
 
     const toggleEventModal = () => {
         setModalEventCreate(prev => !prev);
@@ -39,7 +41,7 @@ const Calendar = () => {
 
         </div>
       {role !== USER_ROLE.NONE ? (
-        <CalendarBody />
+        <CalendarBody events={events} />
       ) : (
           <div>
               <h2 className={classes.warning}>

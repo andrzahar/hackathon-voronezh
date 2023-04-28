@@ -12,10 +12,8 @@ import { getUserToken } from '../../../store/selectors/authSelector';
 import { getEvents } from '../../../store/services/services';
 import { USER_ROLE } from '../../core/UserRoleEnum';
 import { getDate } from '../../core/getDate';
-import EventCreateModal from "../../CreateModal/EventCreateModal/EventCreateModal";
 
-const CalendarBody = () => {
-  const [events, setEvents] = useState([]);
+const CalendarBody = ({events}) => {
   const token = useSelector(getUserToken);
 
   useEffect(() => {
