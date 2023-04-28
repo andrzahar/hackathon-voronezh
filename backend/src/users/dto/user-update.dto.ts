@@ -1,20 +1,23 @@
 import { IsNotEmpty, IsPhoneNumber } from "class-validator";
 import { Role } from "../../schemas/user.schema";
+import { Optional } from "@nestjs/common";
 
 export class UserUpdateDto {
-  @IsNotEmpty()
+  @Optional()
   userId:string;
-  @IsNotEmpty()
+  @Optional()
   password?: string;
-  @IsNotEmpty()
+  @Optional()
   login?: string;
-  @IsNotEmpty()
+  @Optional()
   name?: string;
   @IsPhoneNumber()
-  @IsNotEmpty()
+  @Optional()
   phone?: string;
-  @IsNotEmpty()
+  @Optional()
   role?: Role;
-  @IsNotEmpty()
+  @Optional()
   mail?: string;
+  @Optional()
+  telegram: string;
 }

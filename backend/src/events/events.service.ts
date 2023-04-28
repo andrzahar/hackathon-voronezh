@@ -27,9 +27,12 @@ export class EventsService {
   public async update(dto: EventUpdateDto) {
     await validateOrReject(dto)
 
-    const updateEvent = plainToClass(this.eventModel, dto)
+    const updateEvent = await this.eventModel.updateOne({_id: dto.id}, {$set: dto});
 
-    return this.eventModel.findByIdAndUpdate(new Types.ObjectId(dto.id), updateEvent)
+    console.table(updateEvent)
+
+
+    return this.eventModel.findById(dto.id);
   }
 
 }

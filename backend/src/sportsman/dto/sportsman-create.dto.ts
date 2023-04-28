@@ -6,6 +6,8 @@ import { Passport } from "../../schemas/passport.schema";
 
 export class SportsmanCreateDto {
   @IsNotEmpty()
+  userId: string;
+  @IsNotEmpty()
   sex: Sex;
   @IsNotEmpty()
   @IsDate()

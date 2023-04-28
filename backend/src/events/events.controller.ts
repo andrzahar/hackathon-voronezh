@@ -14,7 +14,7 @@ export class EventsController {
   }
 
   @Post()
-  @Roles('редставитель региональной Фередрации', 'Партнёр')
+  @Roles('representative', 'partner')
   @UseGuards(RolesGuard)
   public async createEvent(@Body() dto: EventAddDto) {
      try {

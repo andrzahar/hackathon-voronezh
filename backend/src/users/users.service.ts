@@ -2,11 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { User, UserDocument } from "../schemas/user.schema";
 import { Model, Types } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
-import {
-  UserErrorFoundException,
-  UserErrorLoginException,
-  UserErrorPhoneException, UserErrorRoleException
-} from "../error/user-error.exception";
+import { UserErrorFoundException, UserErrorRoleException } from "../error/user-error.exception";
 import { validateOrReject } from "class-validator";
 import { plainToClass } from "class-transformer";
 import { UserDeleteDto } from "./dto/user-delete.dto";
@@ -52,22 +48,22 @@ export class UsersService {
   }
 
   public async update(dto: UserUpdateDto) {
-    const user = plainToClass(this.usersModel, dto)
 
-    const userId = new Types.ObjectId(user.id);
+    const updateUser = await this.usersModel.updateOne({_id: dto.userId}, {$set: dto});
 
-    return this.usersModel.findByIdAndUpdate(userId, user, {new: true});
+    console.table(updateUser);
+
+    return this.usersModel.findById(dto.userId)
   }
 
   public async roles(dto: RolesAddDto) {
-    const user = await this.findById(new Types.ObjectId(dto.userId))
+    const updateUser = await this.usersModel.updateOne({_id: dto.userId}, {$set: dto});
 
-    if(!user) {
+    if(!updateUser) {
       throw new UserErrorRoleException()
     }
 
-    user.role = dto.role
-    return this.usersModel.findByIdAndUpdate(new Types.ObjectId(dto.userId), user);
+    return this.usersModel.findById(dto.userId)
   }
 
   private async findById(id: Types.ObjectId): Promise<UserDocument> {

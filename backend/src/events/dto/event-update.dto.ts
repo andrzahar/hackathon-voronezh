@@ -8,6 +8,12 @@ export class EventUpdateDto {
   @IsString()
   @IsNotEmpty()
   id: string
+  @IsNotEmpty()
+  name?:string;
+  @IsNotEmpty()
+  shortName?:string;
+  @IsNotEmpty()
+  description?:string;
   @IsDate()
   @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   time_end?: Date

@@ -5,8 +5,8 @@ import {
   Get,
   HttpCode,
   MethodNotAllowedException,
-  Patch,
-  Post,
+  Headers,
+  Post, Put,
   Request, UseGuards
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
@@ -36,10 +36,10 @@ export class UsersController {
   }
 
   @HttpCode(200)
-  @Patch()
+  @Put()
   public async updateUser(@Body() dto: UserUpdateDto) {
     try {
-      return this.usersService.update(dto)
+      return await this.usersService.update(dto)
     } catch {
       throw new MethodNotAllowedException()
     }
@@ -56,11 +56,13 @@ export class UsersController {
 
   @HttpCode(200)
   @UseGuards(RolesGuard)
-  @Roles('Администратор ФСП')
+  @Roles('administrator')
   @Post('/role')
-  public async addRole(@Request() req) {
+  public async addRole(@Headers() header) {
      try {
-       return this.usersService.roles({role: req.user.role, userId: req.user.id})
+       const role = header['role']
+       const userId = header['userId']
+       return this.usersService.roles({role: role, userId: userId})
      } catch {
         throw new MethodNotAllowedException()
      }
