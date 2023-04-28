@@ -6,6 +6,7 @@ import { Accordion } from 'react-bootstrap';
 import classes from './PersonalCabinet.module.css';
 import account from '../../images/account.svg';
 import EditModal from '../EditModal/EditModal';
+import {getUserRole} from "./common/getUserRole";
 
 const PersonalCabinet = () => {
   const [modal, setModal] = useState(false);
@@ -48,7 +49,7 @@ const PersonalCabinet = () => {
               <p>Дата рождения: {sportsmanInfo.properties.birthday}</p>
             </div>
             <div className={classes.contacts}>
-              <p>Роль: {userInfo.role}</p>
+              <p>Роль: {getUserRole(userInfo.role)}</p>
               <p>Телефон: {userInfo.phone}</p>
               <p>Пол: {sportsmanInfo.sex}</p>
               {/* <p>Локация: г. Оренбург</p> */}

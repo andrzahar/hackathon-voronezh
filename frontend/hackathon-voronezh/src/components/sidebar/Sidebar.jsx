@@ -11,16 +11,17 @@ import {NavLink} from 'react-router-dom';
 
 import classes from './SideBar.module.css';
 import {useSelector} from "react-redux";
+import {getUserRole} from "../PersonalCabinet/common/getUserRole";
 
 const Sidebar = () => {
     const role = useSelector(state => state.user.role);
 
     return (
-        <div style={{display: 'flex', height: '100vh', overflow: 'scroll initial', position: 'sticky', top: 0}}>
+        <div style={{display: 'flex', height: '100vh', overflow: 'scroll initial', position: 'sticky', top: 0, maxWidth: '300px'}}>
             <CDBSidebar textColor="var(--color--grey)" backgroundColor="var(--color--darkGrey)">
                 <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-                    <a href="/" className="text-decoration-none" style={{color: 'inherit'}}>
-                        {role === 'none' ? '' : role}
+                    <a href="/" className="text-decoration-none" style={{color: 'inherit', textOverflow: 'ellipsis'}}>
+                        {role === 'none' ? '' : getUserRole(role)}
                     </a>
                 </CDBSidebarHeader>
                 <CDBSidebarContent className="sidebar-content">
