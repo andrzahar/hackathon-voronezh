@@ -31,12 +31,12 @@ const Authorization = () => {
 
   const regAuthUser = async () => {
     const token = await authRegistration({ mail, password });
-    // if (login != null && password != null) {
-    //     dispatch(createUser(login, password));
-    //     setModal(true);
-    // }
 
-    console.log(userKey);
+    if (token) {
+      const info = await getUserInfo({ Authorization: token });
+
+      dispatch(setUserInfo(token, info));
+    }
   };
 
   const onChangePassword = e => {

@@ -1,6 +1,6 @@
-import { fetchLogin, fetchRegister } from '../api/authApi';
-import {fetchUserInfo} from "../api/userApi";
-import {fetchGetEvent} from "../api/eventApi";
+import { fetchLogin, fetchRegister } from '../../api/authApi';
+import {fetchUserInfo} from "../../api/userApi";
+import {fetchGetEvent} from "../../api/eventApi";
 
 export async function authLogin(credentials) {
     try {
