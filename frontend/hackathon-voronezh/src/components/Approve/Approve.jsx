@@ -1,23 +1,26 @@
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import classes from './Approve.module.css';
+import {updateRole} from "../../store/services/services";
+import {getUserToken} from "../../store/selectors/authSelector";
 
 const Approve = () => {
-  const role = useSelector(state => state.user.role);
-  const [id, setId] = useState('');
+    const role = useSelector(state => state.user.role);
+    const [id, setId] = useState('');
+    const token = useSelector(getUserToken);
 
-  const setRole=(role)=>{
+    const setRole = async (role) => {
+        const response = await updateRole({Authorization: token, userId: id, role})
+    }
 
-  }
-
-  return (
-    <div style={{ width: '100%' }}>
-      <style type="text/css">
-        {`
+    return (
+        <div style={{width: '100%'}}>
+            <style type="text/css">
+                {`
                .btn-blue {
                background-color: var(--color--blue);
                color: var(--color--grey);
@@ -28,37 +31,39 @@ const Approve = () => {
                color: var(--color--grey);
            }
            `}
-      </style>
-      {role === 'representative' ? (
-        <div>
-          <h1 className={classes.title}>Добавление спортсмена</h1>
-          <Form className={classes.form}>
-            <Form.Group className="mb-3">
-              <Form.Label>Укажите id спортсмена</Form.Label>
-              <Form.Control value={id} onChange={e => setId(e.currentTarget.value)} type={'text'} />
-            </Form.Group>
-            <Button variant="blue" type="submit" >
-              Найти спортсмена
-            </Button>
-          </Form>
+            </style>
+            {role === 'representative' ? (
+                <div>
+                    <h1 className={classes.title}>Добавление спортсмена</h1>
+                    <Form className={classes.form}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Укажите id спортсмена</Form.Label>
+                            <Form.Control value={id} onChange={e => setId(e.currentTarget.value)} type={'text'}/>
+                        </Form.Group>
+                        <Button variant="blue" type="submit">
+                            Найти спортсмена
+                        </Button>
+                    </Form>
+                </div>
+            ) : (
+                <div>
+                    <h1 className={classes.title}>Добавление представителя</h1>
+                    <Form className={classes.form}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Укажите id представителя</Form.Label>
+                            <Form.Control value={id} onChange={e => setId(e.currentTarget.value)} type={'text'}/>
+                        </Form.Group>
+                        <DropdownButton title="Найти" id="bg-nested-dropdown">
+                            <Dropdown.Item eventKey="1" onClick={() => setRole('sportsman')}>Добавить как
+                                спортсмена</Dropdown.Item>
+                            <Dropdown.Item eventKey="2" onClick={() => setRole('representative')}>Доавить как
+                                представителя</Dropdown.Item>
+                        </DropdownButton>
+                    </Form>
+                </div>
+            )}
         </div>
-      ) : (
-        <div>
-          <h1 className={classes.title}>Добавление представителя</h1>
-          <Form className={classes.form}>
-            <Form.Group className="mb-3">
-              <Form.Label>Укажите id представителя</Form.Label>
-              <Form.Control value={id} onChange={e => setId(e.currentTarget.value)} type={'text'} />
-            </Form.Group>
-              <DropdownButton title="Найти" id="bg-nested-dropdown">
-                  <Dropdown.Item eventKey="1" onClick={()=>setRole('sportsman')}>Добавить как спортсмена</Dropdown.Item>
-                  <Dropdown.Item eventKey="2" onClick={()=>setRole('representative')}>Доавить как представителя</Dropdown.Item>
-              </DropdownButton>
-          </Form>
-        </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default Approve;
