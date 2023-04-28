@@ -7,6 +7,7 @@ import logo from "../../../images/light_background.svg";
 import classes from "./CalendarBody.module.css";
 import Measure from "../../Measure/Measure";
 import {useSelector} from "react-redux";
+import EventEditModal from "../../EditModal/EventEditModal/EventEditModal";
 
 const CalendarBody = () => {
   return (
@@ -22,16 +23,25 @@ const CalendarBody = () => {
 
 const CalendarItem = () => {
   const [modal, setModal] = useState(false);
+  const [modalEvent, setModalEvent] = useState(false);
 
   const closeModal = () => {
     setModal(false);
   };
 
+  const closeEventModal=()=>{
+    setModalEvent(false);
+  }
+
   const event=useSelector(state=>state.event);
+  const role=useSelector(state=>state.user.role);
+
+  console.log(role)
 
   return (
     <>
       {modal ? <Measure closeModal={() => closeModal()} /> : <></>}
+      {modalEvent ? <EventEditModal closeModal={() => closeEventModal()} /> : <></>}
       <Card style={{ width: "18rem" }}>
         <style type="text/css">
           {`
@@ -67,6 +77,17 @@ const CalendarItem = () => {
           >
             Подробнее
           </Button>
+          {role!=='Спортсмен'?
+              <Button
+                  className={classes.cardBtn}
+                  variant={"red"}
+                  onClick={() => setModalEvent(true)}
+                  href="#"
+              >
+                Изменить данные о мероприятии
+              </Button>:
+              <></>
+          }
         </Card.Body>
       </Card>
     </>

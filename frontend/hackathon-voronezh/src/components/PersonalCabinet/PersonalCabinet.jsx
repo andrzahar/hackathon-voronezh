@@ -68,11 +68,11 @@ const PersonalCabinet = () => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Данные паспорта</Accordion.Header>
                 <Accordion.Body style={{ backgroundColor: 'var(--color--grey)' }}>
-                  <div>Cерия номер: {sportsmanInfo.passport.number}</div>
-                  <div>Кем выдан: {sportsmanInfo.passport.companyName}</div>
-                  <div>Дата выдачи: {sportsmanInfo.passport.issueDate}</div>
-                  <div>Код подразделения: {sportsmanInfo.passport.companyCode}</div>
-                  <div>Регистрация: {sportsmanInfo.passport.birthdayplace}</div>
+                  <div className={classes.passItem}>Cерия номер: {sportsmanInfo.passport.number}</div>
+                  <div className={classes.passItem}>Кем выдан: {sportsmanInfo.passport.companyName}</div>
+                  <div className={classes.passItem}>Дата выдачи: {sportsmanInfo.passport.issueDate}</div>
+                  <div className={classes.passItem}>Код подразделения: {sportsmanInfo.passport.companyCode}</div>
+                  <div className={classes.passItem}>Регистрация: {sportsmanInfo.passport.birthdayplace}</div>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

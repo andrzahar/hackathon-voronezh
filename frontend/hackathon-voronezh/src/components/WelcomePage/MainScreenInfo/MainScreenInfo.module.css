@@ -30,4 +30,9 @@
     align-items: center;
     text-transform: uppercase;
     text-align: center;
+    transition: all 1s ease-out;
+}
+.item:hover{
+    transition: all 1s ease-out;
+    scale: 110%;
 }
