@@ -23,12 +23,19 @@
 
 @media screen and (width < 1024px) {
     .item {
-        margin: 0 15px;
+        /*margin: 0 15px;*/
     }
     .container{
         padding: 0;
     }
     .title{
         margin: 50px 0;
+    }
+}
+
+@media screen and (width < 425px) {
+    .item {
+        /*margin: 0 15px;*/
+        padding: 10px 0;
     }
 }
