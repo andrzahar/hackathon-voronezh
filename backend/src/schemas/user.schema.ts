@@ -5,10 +5,10 @@ import {IsPhoneNumber} from "class-validator";
 export type UserDocument = User & Document;
 
 export enum Role {
-  ADMINISTRATOR_FSP = 'Администратор ФСП',
-  SPORTSMAN = 'Спортсмен',
-  REPRESENTATIVE = 'Представитель региональной Фередрации',
-  PARTNER = 'Партнёр',
+  ADMINISTRATOR_FSP = 'administrator',
+  SPORTSMAN = 'sportsman',
+  REPRESENTATIVE = 'representative',
+  PARTNER = 'partner',
   NONE = 'none',
 }
 

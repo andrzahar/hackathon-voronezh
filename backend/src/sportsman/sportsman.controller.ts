@@ -24,7 +24,7 @@ export class SportsmanController {
 
   @Post()
   @UseGuards(RolesGuard)
-  @Roles('Представитель региональной Фередрации')
+  @Roles('representative')
   public async create(@Body() dto: SportsmanCreateDto) {
     try {
       return await this.sportsmanService.create(dto)

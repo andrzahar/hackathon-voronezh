@@ -56,7 +56,7 @@ export class UsersController {
 
   @HttpCode(200)
   @UseGuards(RolesGuard)
-  @Roles('Администратор ФСП')
+  @Roles('administrator')
   @Post('/role')
   public async addRole(@Headers() header) {
      try {
