@@ -1,17 +1,22 @@
 import cn from 'classnames';
 import { Badge, ListGroup, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-import classes from './Achievements.module.css';
+import classes from './AchievementsListPage.module.css';
+import {ROUTE_ACHIEVEMENTS_ITEM} from "../../routes/routes";
 
 const AchievementsItem = () => {
-  const handlerClick = () => {};
+  const navigate = useNavigate();
+
+  const handlerClick = () => {
+    navigate(ROUTE_ACHIEVEMENTS_ITEM);
+  };
 
   const renderTooltip = props => <Tooltip {...props}>Это ваш лучший результат!</Tooltip>;
 
   return (
     <ListGroup.Item
       as="li"
-      // active={true}
       onClick={handlerClick}
       className={cn('d-flex justify-content-between align-items-start', classes.item)}
     >
