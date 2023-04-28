@@ -21,6 +21,11 @@ export const BASE_ROUTES = [
     Element: Calendar,
   },
   {
+    path: ROUTE_FAQ,
+    name: 'Личный кабинет',
+    Element: FAQ,
+  },
+  {
     path: ROUTE_ACCOUNT,
     name: 'Личный кабинет',
     Element: PersonalCabinet,
