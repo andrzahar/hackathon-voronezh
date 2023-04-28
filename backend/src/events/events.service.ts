@@ -13,7 +13,7 @@ export class EventsService {
 
   public async getAll() {
     return this.eventModel.find().
-    populate(['eventMember']).
+    populate(['members', 'creator']).
     exec()
   }
 
