@@ -29,8 +29,13 @@ export class EventsController {
   @Post()
   @Roles('representative', 'partner', 'administrator')
   @UseGuards(RolesGuard)
-  public async createEvent(@Body() dto: EventAddDto) {
+  public async createEvent(@Body() dto: EventAddDto, @Headers() headers) {
      try {
+       const authHeader = headers.authorization;
+       const token = authHeader.split(' ')[1]
+
+       const user = this.jwtService.verify(token);
+       dto.creator = user.id
        return await this.eventsService.create(dto)
      } catch {
        throw new MethodNotAllowedException()

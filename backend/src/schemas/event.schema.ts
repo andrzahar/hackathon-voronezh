@@ -14,17 +14,17 @@ export class Event {
   id: Types.ObjectId;
   @Prop({required:true})
   name:string;
-  @Prop({required:true})
+  @Prop({required:false})
   shortName:string;
   @Prop({required:true})
   description:string;
-  @Prop({ required: true, type: Date })
+  @Prop({ required: false, type: Date })
   time_end: string;
-  @Prop({ required: true, type: Date})
+  @Prop({ required: false, type: Date})
   time_start: string;
-  @Prop({required: true})
+  @Prop({required: false})
   criterions: string[];
-  @Prop({ required: true, ref: 'User' })
+  @Prop({ required: false, ref: 'User' })
   members: Types.ObjectId[];
   @Prop({ required: true, ref: 'User' })
   creator: Types.ObjectId;

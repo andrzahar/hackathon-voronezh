@@ -2,6 +2,7 @@ import { IsNotEmpty, IsString } from "class-validator";
 import { Prop } from "@nestjs/mongoose";
 import { Types } from "mongoose";
 import { Status } from "../../schemas/event.schema";
+import { Optional } from "@nestjs/common";
 
 export class EventUpdateDto {
   @IsString()
@@ -9,7 +10,7 @@ export class EventUpdateDto {
   id: string
   @IsNotEmpty()
   name?:string;
-  @IsNotEmpty()
+  @Optional()
   shortName?:string;
   @IsNotEmpty()
   description?:string;
@@ -21,5 +22,6 @@ export class EventUpdateDto {
   creator: Types.ObjectId;
   @Prop({required : true, enum : Status, default: Status.Upcoming})
   status: Status;
+  @Optional()
   criterions?: string[];
 }
