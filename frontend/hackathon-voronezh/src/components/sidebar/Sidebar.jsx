@@ -70,6 +70,12 @@ const Sidebar = () => {
                                             </NavLink> :
                                             <></>
                                     }
+                                    <NavLink to={'/FAQ'}
+                                             className={({isActive}) => (isActive ? classes.activeClicked : '')}>
+                                        <CDBSidebarMenuItem icon="question" className={classes.sidebarElement}>
+                                            FAQ
+                                        </CDBSidebarMenuItem>
+                                    </NavLink>
 
                                 </div>
                             ) :

@@ -4,6 +4,7 @@ export const ROUTE_MAIN_CONTAINER = '/';
 export const ROUTE_ACCOUNT = '/account';
 
 export const ROUTE_APPROVE = '/approve';
+export const ROUTE_FAQ = '/FAQ';
 export const ROUTE_ACHIEVEMENTS = '/achievements';
 export const ROUTE_ACHIEVEMENTS_ITEM = '/achievements-item';
 
