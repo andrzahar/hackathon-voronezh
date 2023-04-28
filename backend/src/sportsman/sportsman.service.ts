@@ -29,11 +29,10 @@ export class SportsmanService {
     const existing = this.info(dto.user)
 
     if(existing) {
-       const update = plainToClass(SportsmanUpdateDto, existing)
-       return this.update(dto.user, update)
+       return this.update(dto)
     }
 
-    const passportDTO = plainToClass(PassportCreateDto, RegistrationDto);
+    const passportDTO = plainToClass(PassportCreateDto, dto);
     const passport = await this.passportService.create(passportDTO);
     const passportId = new Types.ObjectId(passport.id);
 
@@ -48,7 +47,11 @@ export class SportsmanService {
     return await sportsman.save()
   }
 
-  private async update(userId:Types.ObjectId, dto: SportsmanUpdateDto) {
-     return this.sportsmanModel.findByIdAndUpdate(new Types.ObjectId(userId), dto)
+  private async update(dto: SportsmanUpdateDto) {
+    const updateSportsman = await this.sportsmanModel.updateOne({_id: dto.userId}, {$set: dto});
+
+    console.table(updateSportsman)
+
+    return this.sportsmanModel.findById(dto.userId)
   }
 }

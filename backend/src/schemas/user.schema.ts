@@ -30,6 +30,8 @@ export class User {
   role : Role;
   @Prop({required: true})
   mail: string;
+  @Prop({required: true, default: 'null'})
+  telegram: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

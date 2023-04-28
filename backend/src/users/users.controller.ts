@@ -6,7 +6,7 @@ import {
   HttpCode,
   MethodNotAllowedException,
   Patch,
-  Post,
+  Post, Put,
   Request, UseGuards
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
@@ -36,10 +36,10 @@ export class UsersController {
   }
 
   @HttpCode(200)
-  @Patch()
+  @Put()
   public async updateUser(@Body() dto: UserUpdateDto) {
     try {
-      return this.usersService.update(dto)
+      return await this.usersService.update(dto)
     } catch {
       throw new MethodNotAllowedException()
     }
