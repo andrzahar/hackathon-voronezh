@@ -1,16 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Card from 'react-bootstrap/Card';
-import { Accordion } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import classes from './EditModal.module.css';
-import avatar from '../../images/avatar.webp';
 import account from '../../images/account.svg';
-import logo from '../../images/light_background.svg';
 
 const EditModal = ({ closeModal }) => {
   const sportsmanInfo = useSelector(state => state.sportsman);
@@ -28,6 +23,8 @@ const EditModal = ({ closeModal }) => {
 
   const [omsValue, setOmsValue] = useState(sportsmanInfo.oms);
 
+  const [check, setCheck]=useState(true);
+
   const avatar = null;
 
   const changeImage = () => {};
@@ -38,7 +35,7 @@ const EditModal = ({ closeModal }) => {
       style={{
         display: 'block',
         position: 'absolute',
-        zIndex: 3
+        zIndex: 3,
       }}
     >
       <div className={classes.background} />
@@ -95,33 +92,57 @@ const EditModal = ({ closeModal }) => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Серия номер паспорта</Form.Label>
-              <Form.Control value={pasValue} onChange={e => setPasValue(e.currentTarget.value)} />
+              <Form.Label>Роль</Form.Label>
+              <Form.Check name={'role'} label={'спортсмен'} type={'radio'} id={'sportsmen'} onChange={()=>setCheck(!check)} checked={check}/>
+              <Form.Check name={'role'} label={'представитель'} type={'radio'} id={'representative'}  onChange={()=>setCheck(!check)} checked={!check} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label >Серия номер паспорта</Form.Label>
+              {check?
+                  <Form.Control value={pasValue} onChange={e => setPasValue(e.currentTarget.value)} />:
+                  <Form.Control disabled={true} value={pasValue} onChange={e => setPasValue(e.currentTarget.value)} />
+              }
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Кем выдан</Form.Label>
-              <Form.Control value={pasOwnerValue} onChange={e => setPasOwnerValue(e.currentTarget.value)} />
+              {check?
+              <Form.Control  value={pasOwnerValue} onChange={e => setPasOwnerValue(e.currentTarget.value)} />:
+              <Form.Control disabled={true} value={pasOwnerValue} onChange={e => setPasOwnerValue(e.currentTarget.value)} />
+              }
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Дата выдачи</Form.Label>
-              <Form.Control value={pasIssueValue} onChange={e => setPasIssueValue(e.currentTarget.value)} />
+              {check?
+              <Form.Control value={pasIssueValue} onChange={e => setPasIssueValue(e.currentTarget.value)} />:
+              <Form.Control disabled={true} value={pasIssueValue} onChange={e => setPasIssueValue(e.currentTarget.value)} />
+              }
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Код подразделения</Form.Label>
-              <Form.Control value={pasCompanyCodeValue} onChange={e => setCompanyCodeValue(e.currentTarget.value)} />
+              {check?
+              <Form.Control value={pasCompanyCodeValue} onChange={e => setCompanyCodeValue(e.currentTarget.value)} />:
+              <Form.Control  disabled={true} value={pasCompanyCodeValue} onChange={e => setCompanyCodeValue(e.currentTarget.value)} />
+              }
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Регистрация</Form.Label>
-              <Form.Control value={pasBValue} onChange={e => setPasBValue(e.currentTarget.value)} />
+              {check?
+              <Form.Control value={pasBValue} onChange={e => setPasBValue(e.currentTarget.value)} />:
+              <Form.Control disabled={true} value={pasBValue} onChange={e => setPasBValue(e.currentTarget.value)} />
+              }
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>ПОЛИС</Form.Label>
-              <Form.Control value={omsValue} onChange={e => setOmsValue(e.currentTarget.value)} />
+              {check?
+              <Form.Control value={omsValue} onChange={e => setOmsValue(e.currentTarget.value)} />:
+              <Form.Control disabled={true} value={omsValue} onChange={e => setOmsValue(e.currentTarget.value)} />
+              }
             </Form.Group>
           </Form>
         </Modal.Body>

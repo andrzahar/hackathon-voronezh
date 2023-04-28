@@ -14,15 +14,29 @@
     width: 300px
 }
 .infoGroup{
-    margin-right: 100px;
+    flex:1;
+    /*margin-right: 100px;*/
 }
 .accountLogo:hover{
     cursor: pointer;
 }
 
-@media screen and (width<500px){
+@media screen and (max-width<1024px){
     .titleGroup{
         padding: 0;
+        color:red;
+    }
+    .infoGroup{
+        margin-right: 0;
+    }
+    .headerLogo{
+        width: 200px;
+    }
+}
+@media(max-width:500px){
+    .titleGroup{
+        padding: 0;
+        color:red;
     }
     .infoGroup{
         margin-right: 0;

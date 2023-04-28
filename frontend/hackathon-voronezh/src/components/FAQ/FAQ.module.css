@@ -5,3 +5,9 @@
     color: var(--color--blue);
     margin:50px 0
 }
+
+@media(max-width:500px){
+    .title{
+        font-size: 24px;
+    }
+}

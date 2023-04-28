@@ -3,16 +3,17 @@ import {
   ROUTE_ACHIEVEMENTS,
   ROUTE_ACHIEVEMENTS_ITEM,
   ROUTE_APPROVE,
-  ROUTE_AUTH, ROUTE_FAQ,
-  ROUTE_MAIN_CONTAINER
+  ROUTE_AUTH,
+  ROUTE_FAQ,
+  ROUTE_MAIN_CONTAINER,
 } from './routes';
 import Calendar from '../components/Calendar/Calendar';
 import WelcomePage from '../components/WelcomePage/WelcomePage';
 import PersonalCabinet from '../components/PersonalCabinet/PersonalCabinet';
 import AchievementsListPage from '../components/Achievements/AchievementsListPage';
-import Approve from "../components/Approve/Approve";
-import AchievementsPage from "../components/Achievements/AchievementsPage";
-import FAQ from "../components/FAQ/FAQ";
+import Approve from '../components/Approve/Approve';
+import AchievementsPage from '../components/Achievements/AchievementsPage';
+import FAQ from '../components/FAQ/FAQ';
 
 export const BASE_ROUTES = [
   {

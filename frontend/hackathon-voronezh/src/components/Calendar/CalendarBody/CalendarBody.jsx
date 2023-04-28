@@ -30,8 +30,8 @@ const CalendarBody = () => {
     return (
         <div className={classes.calendarBody}>
             {events.map(item => (
-                    <CalendarItem key={item.id} event={item}/>
-                ))
+                <CalendarItem key={item.id} event={item}/>
+            ))
             }
         </div>
     );
@@ -56,7 +56,11 @@ const CalendarItem = ({event}) => {
         <>
             {modal ? <Measure event={event} closeModal={() => closeModal()}/> : <></>}
             {modalEvent ? <EventEditModal closeModal={() => closeEventModal()}/> : <></>}
-            <Card style={{width: "18rem"}}>
+            <>
+
+            </>
+
+            <Card className={classes.card}>
                 <style type="text/css">
                     {`
                     .btn-blue {
@@ -76,7 +80,8 @@ const CalendarItem = ({event}) => {
                     <Card.Text>{event.description}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroup.Item>Дата проведения: {getDate(event.time_start)} - {getDate(event.time_end)}</ListGroup.Item>
+                    <ListGroup.Item>Дата
+                        проведения: {getDate(event.time_start)} - {getDate(event.time_end)}</ListGroup.Item>
                     <ListGroup.Item>{event.creator.firstname} {event.creator.surname}</ListGroup.Item>
                     <ListGroup.Item>Статус: {event.status}</ListGroup.Item>
                 </ListGroup>
@@ -101,6 +106,7 @@ const CalendarItem = ({event}) => {
                     }
                 </Card.Body>
             </Card>
+
         </>
     );
 };
