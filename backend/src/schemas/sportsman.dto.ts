@@ -15,8 +15,6 @@ export class Sportsman {
   id: Types.ObjectId;
   @Prop({enum: Sex, default: Sex.Male})
   sex: Sex;
-  @Prop({required: true, type: Date})
-  @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   birthday: string
   @Prop({required: true, ref: 'Passport'})
   passport: Types.ObjectId;
