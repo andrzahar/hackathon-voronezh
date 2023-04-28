@@ -36,6 +36,11 @@ export const BASE_ROUTES = [
     Element: AchievementsListPage,
   },
   {
+    path: ROUTE_FAQ,
+    name: 'Q&A',
+    Element: FAQ,
+  },
+  {
     path: ROUTE_ACHIEVEMENTS_ITEM,
     name: 'Достижение',
     Element: AchievementsPage,

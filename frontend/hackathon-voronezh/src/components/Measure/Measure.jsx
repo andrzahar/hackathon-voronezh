@@ -7,6 +7,7 @@ import {Accordion} from "react-bootstrap";
 import logo from "../../images/light_background.svg";
 import classes from "./Measure.module.css";
 import {getDate} from "../core/getDate";
+import {Fragment} from "react";
 
 const Measure = ({closeModal, event}) => {
     return (
@@ -53,9 +54,9 @@ const Measure = ({closeModal, event}) => {
                                 <Accordion.Header>Список участников</Accordion.Header>
                                 <Accordion.Body>
                                     {event.members.map(user => (
-                                            <div>
+                                            <Fragment key={user.id}>
                                                 {user.surname} {user.firstname}
-                                            </div>
+                                            </Fragment>
                                         )
                                     )}
                                 </Accordion.Body>
