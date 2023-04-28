@@ -80,7 +80,7 @@ const CalendarItem = ({ event }) => {
             Дата проведения: {getDate(event.time_start)} - {getDate(event.time_end)}
           </ListGroup.Item>
           <ListGroup.Item>
-            {event.creator.firstname} {event.creator.surname}
+            {event.creator?.firstname} {event.creator?.surname}
           </ListGroup.Item>
           <ListGroup.Item>Статус: {event.status}</ListGroup.Item>
         </ListGroup>

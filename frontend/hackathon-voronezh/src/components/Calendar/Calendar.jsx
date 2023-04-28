@@ -23,7 +23,6 @@ const Calendar = () => {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'  }}>
             <h1 className={classes.title}>Календарь мероприятий</h1>
 
-
             {role !== USER_ROLE.NONE
                 ?
                 <div className='p-2 mt-1' role="button" onClick={toggleEventModal}>
