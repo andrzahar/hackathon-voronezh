@@ -15,6 +15,7 @@ import { UserDeleteDto } from "./dto/user-delete.dto";
 import { RegistrationDto } from "../registration/dto/registration.dto";
 import { RolesGuard } from "../auth/roles.guard";
 import { Roles } from "../auth/roles-auth.decorator";
+import { Role } from "../schemas/user.schema";
 
 @Controller('user')
 export class UsersController {
@@ -56,12 +57,12 @@ export class UsersController {
 
   @HttpCode(200)
   @UseGuards(RolesGuard)
-  @Roles('administrator')
+  @Roles(Role.ADMINISTRATOR_FSP)
   @Post('/role')
   public async addRole(@Headers() header) {
      try {
        const role = header['role']
-       const userId = header['userId']
+       const userId = header['user-id']
        return this.usersService.roles({role: role, userId: userId})
      } catch {
         throw new MethodNotAllowedException()

@@ -12,13 +12,15 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signIn(dto: SignInDto): Promise<string> {
+  async signIn(dto: SignInDto) {
     await validateOrReject(dto);
     const user = await this.usersService.findOneByMail(dto.mail);
     if (user?.password !== dto.password) {
       throw new UnauthorizedException();
     }
-    return await this.jwtService.signAsync(this.createPayload(user));
+    return {
+      jwt_token: this.jwtService.signAsync(this.createPayload(user))
+    };
   }
 
   private createPayload(user: UserDocument) {
@@ -26,7 +28,7 @@ export class AuthService {
       id: user.id,
       pass: user.password,
       phone: user.phone,
-      role: user.role,
+      roles: user.role,
     }
   }
 }
