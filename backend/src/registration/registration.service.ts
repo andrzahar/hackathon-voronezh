@@ -13,9 +13,8 @@ export class RegistrationService {
 
   public async signOn(registrationDTO: RegistrationDto) {
     const user = await this.usersService.create(registrationDTO);
-    const payload = this.jwtService.signAsync(this.createPayload(user))
     return {
-      jwt_token: this.jwtService.signAsync(payload)
+      jwt_token: this.jwtService.sign(this.createPayload(user))
     };
   }
 
