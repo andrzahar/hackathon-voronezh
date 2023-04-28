@@ -1,5 +1,4 @@
 async function apiFetch({ method, url , body, params }) {
-    console.log('params', params)
     return fetch(`http://91.142.72.178:5000${url}`, {
         method,
         headers: {'Content-Type': 'application/json', ...params},

@@ -1,17 +1,7 @@
-const initialState = {
-    id: '1',
-    name: 'Роман',
-    surName: 'Адамович',
-    patronymic: 'Николаевич',
-    login: 'RNOre',
-    token: undefined,
-    phone: '89877807652',
-    role: 'representative'//enum
-};
+const initialState = {};
 
 export const userReducer = (state = initialState, action) => {
-    console.log('state', state)
-    console.log('action', action)
+    console.log('action.payload', action.payload)
     switch (action.type) {
         case 'SET_TOKEN': {
             const newState = {
@@ -23,9 +13,11 @@ export const userReducer = (state = initialState, action) => {
         }
         case 'SET_USER_INFO': {
             const newState = {
-                ...action.payload.user,
+                ...action.payload.info,
                 token: action.payload.token,
             };
+
+            console.log('newState', newState)
 
             return newState;
         }

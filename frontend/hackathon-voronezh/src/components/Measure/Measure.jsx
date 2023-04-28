@@ -9,8 +9,6 @@ import classes from "./Measure.module.css";
 import {useSelector} from "react-redux";
 
 const Measure = ({closeModal}) => {
-    console.log("modal");
-
     const event = useSelector(state => state.event);
 
     return (

@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 const Calendar = () => {
     const role = useSelector(state => state.user.role);
     const id = useSelector(state => state.user.id);
-    console.log('id', role);
     return (
         <div style={{width: '100%'}}>
             <h1 className={classes.title}>Календарь мероприятий</h1>

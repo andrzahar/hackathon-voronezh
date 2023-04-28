@@ -36,8 +36,6 @@ const CalendarItem = () => {
     const event = useSelector(state => state.event);
     const role = useSelector(state => state.user.role);
 
-    console.log(role)
-
     return (
         <>
             {modal ? <Measure closeModal={() => closeModal()}/> : <></>}

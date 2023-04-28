@@ -25,7 +25,6 @@ const Authorization = () => {
     if (token) {
       const info = await getUserInfo({ Authorization: token });
 
-      console.log('info', info);
       dispatch(setUserInfo(token, info));
     }
   };
