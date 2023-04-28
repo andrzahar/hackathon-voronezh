@@ -14,16 +14,13 @@ export class EventUpdateDto {
   shortName?:string;
   @IsNotEmpty()
   description?:string;
-  @IsDate()
-  @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
-  time_end?: Date
-  @IsDate()
-  @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
-  time_start?: Date;
+  time_end?: string
+  time_start?: string;
   @Prop({ required: true, ref: 'User' })
   members: Types.ObjectId[];
   @Prop({ required: true, ref: 'User' })
   creator: Types.ObjectId;
   @Prop({required : true, enum : Status, default: Status.Upcoming})
   status: Status;
+  criterions?: string[];
 }

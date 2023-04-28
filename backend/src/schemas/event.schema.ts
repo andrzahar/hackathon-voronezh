@@ -21,12 +21,8 @@ export class Event {
   @Prop({required:true})
   description:string;
   @Prop({ required: true, type: Date })
-  @IsDate()
-  @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   time_end: string;
   @Prop({ required: true, type: Date})
-  @IsDate()
-  @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   time_start: string;
   @Prop({required: true})
   criterions: string[];

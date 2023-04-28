@@ -14,7 +14,7 @@ export class AuthService {
 
   async signIn(dto: SignInDto) {
     await validateOrReject(dto);
-    const user = await this.usersService.findOneByMail(dto.mail);
+    const user = await this.usersService.findOneById(dto.mail);
     if (user?.password !== dto.password) {
       throw new UnauthorizedException();
     }
