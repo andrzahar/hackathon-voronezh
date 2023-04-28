@@ -13,19 +13,7 @@ import { getEvents } from '../../../store/services/services';
 import { USER_ROLE } from '../../core/UserRoleEnum';
 import { getDate } from '../../core/getDate';
 
-const CalendarBody = ({events, setEvents}) => {
-  const token = useSelector(getUserToken);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const a = await getEvents(token);
-
-      console.log(a);
-      setEvents(a);
-    };
-
-    fetchData();
-  }, []);
+const CalendarBody = ({events}) => {
 
   return (
     <div className={classes.calendarBody}>
