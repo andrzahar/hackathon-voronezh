@@ -63,7 +63,7 @@
     margin-bottom: 10px;
 }
 
-@media screen and (width < 1024px) {
+@media  (max-width: 1024px) {
     .personalCabinet{
         padding: 10px;
         width: 70%;

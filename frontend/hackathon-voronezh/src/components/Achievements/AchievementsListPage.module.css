@@ -21,7 +21,7 @@
 
 }
 
-@media screen and (width < 1024px) {
+@media (max-width : 1024px) {
     .item {
         /*margin: 0 15px;*/
     }
@@ -33,7 +33,7 @@
     }
 }
 
-@media screen and (width < 425px) {
+@media (max-width: 425px) {
     .item {
         /*margin: 0 15px;*/
         padding: 10px 0;

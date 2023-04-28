@@ -56,7 +56,7 @@ const CalendarItem = ({event}) => {
         <>
             {modal ? <Measure event={event} closeModal={() => closeModal()}/> : <></>}
             {modalEvent ? <EventEditModal closeModal={() => closeEventModal()}/> : <></>}
-            <Card style={{width: "18rem"}}>
+            <Card className={classes.card}>
                 <style type="text/css">
                     {`
                     .btn-blue {
