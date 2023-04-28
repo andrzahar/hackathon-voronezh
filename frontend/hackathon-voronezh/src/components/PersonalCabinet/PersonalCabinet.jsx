@@ -6,7 +6,7 @@ import { Accordion } from 'react-bootstrap';
 import classes from './PersonalCabinet.module.css';
 import account from '../../images/account.svg';
 import EditModal from '../EditModal/EditModal';
-import {getUserRole} from "./common/getUserRole";
+import { getUserRole } from './common/getUserRole';
 
 const PersonalCabinet = () => {
   const [modal, setModal] = useState(false);

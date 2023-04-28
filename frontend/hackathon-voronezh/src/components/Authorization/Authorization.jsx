@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import classes from './Authorization.module.css';
 import { authLogin, authRegistration, getUserInfo } from '../../store/services/services';
-import { setUserInfo, setUserToken } from '../../store/actions/authAction';
+import { setUserInfo } from '../../store/actions/authAction';
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);

@@ -1,8 +1,7 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import classes from './Header.module.css';
 import headerLogo from '../../images/headerLogo.svg';
-import accountLogo from '../../images/account.svg';
 
 const Header = () => {
   return (

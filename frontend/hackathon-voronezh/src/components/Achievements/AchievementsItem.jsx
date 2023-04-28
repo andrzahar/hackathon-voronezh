@@ -3,7 +3,7 @@ import { Badge, ListGroup, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 import classes from './AchievementsListPage.module.css';
-import {ROUTE_ACHIEVEMENTS_ITEM} from "../../routes/routes";
+import { ROUTE_ACHIEVEMENTS_ITEM } from '../../routes/routes';
 
 const AchievementsItem = () => {
   const navigate = useNavigate();
