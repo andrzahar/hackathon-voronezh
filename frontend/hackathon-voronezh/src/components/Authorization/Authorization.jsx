@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useCallback, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import {authLogin, authRegistration} from "../../store/services/authLogin";
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
   const [modal, setModal] = useState(true);
-  const [login, setLogin] = useState('');
+  const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
@@ -17,21 +17,22 @@ const Authorization = () => {
     setModal(false);
   };
 
-  const checkAuthUser = async () => {
-    const userKey = await authLogin({login, password});
-    console.log(userKey);
-    console.log('log');
+  const checkAuthUser = useCallback(async () => {
+    const userKey = await authLogin({ mail, password });
+
+    console.log('userKey', userKey);
     // if (login != null && password != null) {
     //     dispatch(enterUser(login, password));
     // }
-  };
+  }, [mail, password]);
 
   const regAuthUser = async () => {
-    const userKey = await authRegistration({ login, password });
+    const userKey = await authRegistration({ mail, password });
     // if (login != null && password != null) {
     //     dispatch(createUser(login, password));
     //     setModal(true);
     // }
+
     console.log(userKey);
   };
 
@@ -39,8 +40,8 @@ const Authorization = () => {
     setPassword(e.currentTarget.value);
   };
 
-  const onChangeLogin = e => {
-    setLogin(e.currentTarget.value);
+  const onChangeMail = e => {
+    setMail(e.currentTarget.value);
   };
 
   const togglePage = () => {
@@ -69,7 +70,7 @@ const Authorization = () => {
             <Form className={classes.form}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Логин</Form.Label>
-                <Form.Control type="text" placeholder="Введите логин" value={login} onChange={onChangeLogin} />
+                <Form.Control type="text" placeholder="Введите логин" value={mail} onChange={onChangeMail} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Пароль</Form.Label>
@@ -80,14 +81,16 @@ const Authorization = () => {
                   onChange={onChangePassword}
                 />
               </Form.Group>
-              <Button type="submit" variant="blue" onClick={checkAuthUser}>
+              <Button variant="blue" onClick={checkAuthUser}>
                 Войти
               </Button>
             </Form>
             <div className={classes.infoCard_signIn}>
               <div className={classes.textWrapper}>
                 <h2 className={classes.welcomeTitle}>Здравствуйте👋</h2>
-                <p className={classes.text}>Если Вы еще не зарегестрированы в нашей системе, будем рады Вашему присоединению!</p>
+                <p className={classes.text}>
+                  Если Вы еще не зарегистрированы в нашей системе, будем рады Вашему присоединению!
+                </p>
                 <Button onClick={togglePage} className={classes.btnTel} variant="red">
                   Зарегистрироваться
                 </Button>
@@ -110,7 +113,7 @@ const Authorization = () => {
             <Form className={classes.form}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Логин</Form.Label>
-                <Form.Control type="text" placeholder="Введите логин" value={login} onChange={onChangeLogin} />
+                <Form.Control type="text" placeholder="Введите логин" value={mail} onChange={onChangeMail} />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">

@@ -1,9 +1,7 @@
-async function apiFetch({ method, url = 'GET', body, params }) {
-    return fetch(url, {
+async function apiFetch({ method, url , body, params }) {
+    return fetch(`http://91.142.72.178:5000${url}`, {
         method,
-        headers: {
-            ...(body ? { 'Content-Type': 'application/json', ...params } : {...params}),
-        },
+        headers: {'Content-Type': 'application/json', ...params},
         body: JSON.stringify(body),
 });
 }
@@ -16,17 +14,17 @@ export async function apiGet(url, params) {
 }
 
 export async function apiPost(url, body, params) {
-    return apiFetch('POST', url, body, params);
+    return apiFetch({method: 'POST', url, body, params});
 }
 
 export async function apiPatch(url, body, params) {
-    return apiFetch('PATCH', url, body, params);
+    return apiFetch({method: 'PATCH', url, body, params});
 }
 
 export async function apiPut(url, body, params) {
-    return apiFetch('PUT', url, body, params);
+    return apiFetch({method: 'PUT', url, body, params});
 }
 
 export async function apiDelete(url, body, params) {
-    return apiFetch('DELETE', url, body, params);
+    return apiFetch({method: 'DELETE', url, body, params});
 }
