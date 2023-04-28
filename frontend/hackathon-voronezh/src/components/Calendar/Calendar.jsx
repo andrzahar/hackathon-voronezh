@@ -1,27 +1,31 @@
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import classes from './Calendar.module.css';
 import CalendarFooter from './CalendarFooter/CalendarFooter.jsx';
 import CalendarBody from './CalendarBody/CalendarBody.jsx';
 
 const Calendar = () => {
-  const role = useSelector(state => state.user.role);
-  const id = useSelector(state => state.user.id);
+    const role = useSelector(state => state.user.role);
+    const id = useSelector(state => state.user.id);
 
-  return (
-    <div style={{ width: '100%' }}>
-      <h1 className={classes.title}>Календарь мероприятий</h1>
-      {role !== 'none' ? (
-        <CalendarBody />
-      ) : (
-        <div>
-          <h2 className={classes.warning}>Ваш id: {id}</h2>
-          <h2 className={classes.warning}>Обратитесь к вашему представителю / админимтратору для получения доступа</h2>
-        </div>
-      )}
-      <CalendarFooter />
-    </div>
-  );
-};
+    return (
+        <div style={{width: '100%'}}>
+            <h1 className={classes.title}>Календарь мероприятий</h1>
+             {/*{role !== 'none' ? (*/}
+                {
+                    false? (
+                        <CalendarBody/>
+                    ) : (
+                        <div>
+                            <h2 className={classes.warning}>
+                                Дополните данные в личном кабинете для отображения мероприятий
+                            </h2>
+                        </div>
+                    )
+                }
+            <CalendarFooter/>
+            </div>
+            );
+        };
 
-export default Calendar;
+            export default Calendar;

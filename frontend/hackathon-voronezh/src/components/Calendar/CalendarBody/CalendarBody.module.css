@@ -13,11 +13,19 @@
 .card {
     width: 20rem;
 }
+
+.title {
+    text-align: center;
+    font-size: 36px;
+    color: var(--color--red);
+}
+
 @media (max-width: 400px) {
     .card {
         width: 14rem;
     }
-    .personalData{
+
+    .personalData {
         flex-direction: column;
     }
 
