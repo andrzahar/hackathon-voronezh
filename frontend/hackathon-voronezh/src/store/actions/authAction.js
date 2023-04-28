@@ -1,4 +1,4 @@
-import { action } from 'typesafe-actions';
+import {actions} from "./actions";
 
-export const setUserToken = token => action('SET_TOKEN', { token });
-export const setUserInfo = (token, info) => action('SET_USER_INFO', { token, info });
+export const setUserToken = token => actions('SET_TOKEN', { token });
+export const setUserInfo = (token, info) => actions('SET_USER_INFO', { token, info });
