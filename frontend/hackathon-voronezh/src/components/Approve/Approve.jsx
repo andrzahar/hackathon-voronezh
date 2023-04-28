@@ -14,7 +14,7 @@ const Approve = () => {
     const token = useSelector(getUserToken);
 
     const setRole = async (role) => {
-        const response = await updateRole({Authorization: token, userId: id, role})
+        const response = await updateRole({Authorization: token, 'user-id': id, role})
     }
 
     return (
@@ -40,7 +40,7 @@ const Approve = () => {
                             <Form.Label>Укажите id спортсмена</Form.Label>
                             <Form.Control value={id} onChange={e => setId(e.currentTarget.value)} type={'text'}/>
                         </Form.Group>
-                        <Button variant="blue" type="submit">
+                        <Button variant="blue" onClick={() => setRole('sportsman')}>
                             Найти спортсмена
                         </Button>
                     </Form>
