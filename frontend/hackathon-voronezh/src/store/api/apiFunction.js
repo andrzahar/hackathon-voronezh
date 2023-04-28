@@ -1,7 +1,7 @@
 async function apiFetch({ method, url , body, params }) {
     return fetch(`http://91.142.72.178:5000${url}`, {
         method,
-        headers: {...params},
+        headers: {'Content-Type': 'application/json', ...params},
         body: JSON.stringify(body),
 });
 }

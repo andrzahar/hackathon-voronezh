@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useCallback, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
@@ -17,14 +17,14 @@ const Authorization = () => {
     setModal(false);
   };
 
-  const checkAuthUser = async () => {
+  const checkAuthUser = useCallback(async () => {
     const userKey = await authLogin({ mail, password });
 
     console.log('userKey', userKey);
     // if (login != null && password != null) {
     //     dispatch(enterUser(login, password));
     // }
-  };
+  }, [mail, password]);
 
   const regAuthUser = async () => {
     const userKey = await authRegistration({ mail, password });
