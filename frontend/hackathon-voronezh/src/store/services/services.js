@@ -1,10 +1,13 @@
 import { fetchLogin, fetchRegister } from '../api/authApi';
+import {fetchUserInfo} from "../api/userApi";
 
 export async function authLogin(credentials) {
     try {
-        console.log('credentials', credentials)
         const response = await fetchLogin(credentials);
-        const {userKey} = response;
+        if (response.ok) {
+            const data = await response.json();
+            return `Bearer ${data.jwt_token}`;
+        }
 
         return userKey;
     } catch (e) {
@@ -19,6 +22,20 @@ export async function authRegistration(credentials) {
         const {userKey} = response;
 
         return userKey;
+    } catch (e) {
+        // TODO: доделать обработку ошибок
+        console.log(e);
+    }
+}
+
+export async function getUserInfo(params) {
+    try {
+        const response = await fetchUserInfo(params);
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
     } catch (e) {
         // TODO: доделать обработку ошибок
         console.log(e);

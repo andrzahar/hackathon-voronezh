@@ -13,8 +13,9 @@ export class RegistrationService {
 
   public async signOn(registrationDTO: RegistrationDto) {
     const user = await this.usersService.create(registrationDTO);
-    const payload = this.createPayload(user)
-    return await this.jwtService.signAsync(payload);
+    return {
+      jwt_token: this.jwtService.sign(this.createPayload(user))
+    };
   }
 
   private createPayload(user: UserDocument) {
@@ -23,7 +24,7 @@ export class RegistrationService {
       id: user.id,
       pass: user.password,
       mail: user.mail,
-      role: user.role,
+      roles: user.role,
     }
   }
 }

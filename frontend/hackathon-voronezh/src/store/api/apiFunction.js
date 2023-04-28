@@ -1,4 +1,5 @@
 async function apiFetch({ method, url , body, params }) {
+    console.log('params', params)
     return fetch(`http://91.142.72.178:5000${url}`, {
         method,
         headers: {'Content-Type': 'application/json', ...params},
@@ -7,7 +8,7 @@ async function apiFetch({ method, url , body, params }) {
 }
 
 export async function apiGet(url, params) {
-    return fetch(url, {
+    return fetch(`http://91.142.72.178:5000${url}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', ...params },
     });

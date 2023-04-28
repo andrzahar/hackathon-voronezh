@@ -1,10 +1,11 @@
-import {useCallback, useState} from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 
 import classes from './Authorization.module.css';
-import {authLogin, authRegistration} from "../../store/services/authLogin";
+import { authLogin, authRegistration, getUserInfo } from '../../store/services/services';
+import { setUserInfo, setUserToken } from '../../store/actions/authAction';
 
 const Authorization = () => {
   const [auth, setAuth] = useState(true);
@@ -17,17 +18,20 @@ const Authorization = () => {
     setModal(false);
   };
 
-  const checkAuthUser = useCallback(async () => {
-    const userKey = await authLogin({ mail, password });
+  const checkAuthUser = async e => {
+    e.preventDefault();
+    const token = await authLogin({ mail, password });
 
-    console.log('userKey', userKey);
-    // if (login != null && password != null) {
-    //     dispatch(enterUser(login, password));
-    // }
-  }, [mail, password]);
+    if (token) {
+      const info = await getUserInfo({ Authorization: token });
+
+      console.log('info', info);
+      dispatch(setUserInfo(token, info));
+    }
+  };
 
   const regAuthUser = async () => {
-    const userKey = await authRegistration({ mail, password });
+    const token = await authRegistration({ mail, password });
     // if (login != null && password != null) {
     //     dispatch(createUser(login, password));
     //     setModal(true);
@@ -49,7 +53,7 @@ const Authorization = () => {
   };
 
   return (
-    <div style={{padding:'30px 0'}}>
+    <div style={{ padding: '30px 0' }}>
       <style type="text/css">
         {`
                     .btn-blue {
@@ -63,7 +67,7 @@ const Authorization = () => {
                 }
                 `}
       </style>
-      {/*{modal ? <Measure closeModal={() => closeModal()} /> : <></>}*/}
+      {/* {modal ? <Measure closeModal={() => closeModal()} /> : <></>} */}
       {auth ? (
         <>
           <div className={classes.authorization}>

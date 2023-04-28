@@ -1,26 +1,23 @@
-import { IsDate, IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 import { Prop } from "@nestjs/mongoose";
 import { Types } from "mongoose";
 import { Status } from "../../schemas/event.schema";
-import { Transform } from "class-transformer";
 
 export class EventAddDto {
-  @IsDate()
-  @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
-  time_end: Date;
+  time_end: string;
   @IsNotEmpty()
   name:string;
   @IsNotEmpty()
   shortName:string;
   @IsNotEmpty()
   description:string;
-  @IsDate()
-  @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
-  time_start: Date;
+  time_start: string;
   @Prop({ required: true, ref: 'User' })
   members: Types.ObjectId[];
   @Prop({ required: true, ref: 'User' })
   creator: Types.ObjectId;
   @Prop({required : true, enum : Status, default: Status.Upcoming})
   status: Status;
+  @IsNotEmpty()
+  criterions: string[];
 }

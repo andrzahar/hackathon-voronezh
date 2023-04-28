@@ -15,14 +15,20 @@ import { UserDeleteDto } from "./dto/user-delete.dto";
 import { RegistrationDto } from "../registration/dto/registration.dto";
 import { RolesGuard } from "../auth/roles.guard";
 import { Roles } from "../auth/roles-auth.decorator";
+import { Role } from "../schemas/user.schema";
+import { JwtService } from "@nestjs/jwt";
 
 @Controller('user')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService) {}
 
   @Get()
-  public async getInfo(@Request() req) {
-    return await this.usersService.findOneByMail(req.user.mail)
+  public async getInfo(@Headers() headers) {
+    const authHeader = headers.authorization;
+    const token = authHeader.split(' ')[1]
+
+    const user = this.jwtService.verify(token);
+    return await this.usersService.findOneById(user.id)
   }
 
   @HttpCode(200)
@@ -56,12 +62,12 @@ export class UsersController {
 
   @HttpCode(200)
   @UseGuards(RolesGuard)
-  @Roles('administrator')
+  @Roles(Role.ADMINISTRATOR_FSP)
   @Post('/role')
   public async addRole(@Headers() header) {
      try {
        const role = header['role']
-       const userId = header['userId']
+       const userId = header['user-id']
        return this.usersService.roles({role: role, userId: userId})
      } catch {
         throw new MethodNotAllowedException()

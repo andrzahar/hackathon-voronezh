@@ -16,8 +16,17 @@ export class UsersService {
     @InjectModel(User.name) private usersModel: Model<UserDocument>,
   ) {}
 
-  public async findOneByMail(mail: string): Promise<UserDocument> {
-    const user = await this.usersModel.findOne({ mail: mail }).exec();
+  public async findOneById(id: string): Promise<UserDocument> {
+    const user = await this.usersModel.findById(id).exec();
+    if (!user) {
+      throw new UserErrorFoundException();
+    }
+    return user;
+  }
+
+  public async findOneByMail(mail: string) {
+    const user = await this.usersModel.findOne({mail:mail}).exec();
+
     if (!user) {
       throw new UserErrorFoundException();
     }
@@ -64,10 +73,6 @@ export class UsersService {
     }
 
     return this.usersModel.findById(dto.userId)
-  }
-
-  private async findById(id: Types.ObjectId): Promise<UserDocument> {
-    return this.usersModel.findById(id).exec();
   }
 
 }

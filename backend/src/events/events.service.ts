@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from "@nestjs/mongoose";
 import { Event, EventDocument } from "../schemas/event.schema";
-import { Model, Types } from "mongoose";
+import { Model } from "mongoose";
 import { validateOrReject } from "class-validator";
 import { EventAddDto } from "./dto/event-add.dto";
 import { plainToClass } from "class-transformer";
