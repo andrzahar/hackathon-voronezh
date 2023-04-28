@@ -2,12 +2,17 @@ import { useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 import classes from './Approve.module.css';
 
 const Approve = () => {
   const role = useSelector(state => state.user.role);
   const [id, setId] = useState('');
+
+  const setRole=(role)=>{
+
+  }
 
   return (
     <div style={{ width: '100%' }}>
@@ -32,7 +37,7 @@ const Approve = () => {
               <Form.Label>Укажите id спортсмена</Form.Label>
               <Form.Control value={id} onChange={e => setId(e.currentTarget.value)} type={'text'} />
             </Form.Group>
-            <Button variant="blue" type="submit">
+            <Button variant="blue" type="submit" >
               Найти спортсмена
             </Button>
           </Form>
@@ -45,9 +50,10 @@ const Approve = () => {
               <Form.Label>Укажите id представителя</Form.Label>
               <Form.Control value={id} onChange={e => setId(e.currentTarget.value)} type={'text'} />
             </Form.Group>
-            <Button variant="blue" type="submit">
-              Найти представителя
-            </Button>
+              <DropdownButton title="Найти" id="bg-nested-dropdown">
+                  <Dropdown.Item eventKey="1" onClick={()=>setRole('sportsman')}>Добавить как спортсмена</Dropdown.Item>
+                  <Dropdown.Item eventKey="2" onClick={()=>setRole('representative')}>Доавить как представителя</Dropdown.Item>
+              </DropdownButton>
           </Form>
         </div>
       )}
