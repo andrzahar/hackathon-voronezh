@@ -1,8 +1,7 @@
-import { IsDate, IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 import { Prop } from "@nestjs/mongoose";
 import { Types } from "mongoose";
 import { Status } from "../../schemas/event.schema";
-import { Transform } from "class-transformer";
 
 export class EventUpdateDto {
   @IsString()

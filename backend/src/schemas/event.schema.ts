@@ -1,7 +1,5 @@
 import { Document, Types } from 'mongoose';
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { IsDate } from 'class-validator';
-import { Transform } from "class-transformer";
 
 export type EventDocument = Event & Document;
 

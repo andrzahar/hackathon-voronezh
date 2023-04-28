@@ -7,7 +7,7 @@ import {
   MethodNotAllowedException,
   Headers,
   Post, Put,
-  Request, UseGuards
+  UseGuards
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { UserUpdateDto } from "./dto/user-update.dto";

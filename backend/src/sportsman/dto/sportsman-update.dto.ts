@@ -1,4 +1,3 @@
-import { Types } from "mongoose";
 import { Prop } from "@nestjs/mongoose";
 import { IsDate, IsNotEmpty, Matches } from "class-validator";
 import { Sex } from "../../schemas/sportsman.dto";
