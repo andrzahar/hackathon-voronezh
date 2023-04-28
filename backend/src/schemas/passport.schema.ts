@@ -1,7 +1,6 @@
 import { Document, Types } from 'mongoose';
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { IsDate, IsPassportNumber, Matches } from "class-validator";
-import { EventMemberDocument } from "./eventMember.schema";
+import { IsPassportNumber, Matches } from "class-validator";
 
 export type PassportDocument = Passport & Document;
 

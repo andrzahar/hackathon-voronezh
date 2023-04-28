@@ -17,6 +17,12 @@ export class EventsService {
     exec()
   }
 
+  public async getForUser(id : string) {
+    return this.eventModel.find({creator: id}).
+    populate(['members', 'creator']).
+    exec()
+  }
+
   public async create(dto: EventAddDto) {
     await validateOrReject(dto);
 
