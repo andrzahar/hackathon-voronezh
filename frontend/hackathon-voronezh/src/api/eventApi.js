@@ -5,7 +5,7 @@ export async function fetchGetEvent(params) {
 }
 
 export async function fetchCreateEvent(body, params) {
-  return apiPost('/event', body, params);
+  return apiPost('/events', body, params);
 }
 
 export async function fetchConfirmEvent(params) {

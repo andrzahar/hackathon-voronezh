@@ -19,9 +19,12 @@ export async function authLogin(credentials) {
 export async function authRegistration(credentials) {
   try {
     const response = await fetchRegister(credentials);
-    const { userKey } = response;
 
-    return userKey;
+    if (response.ok) {
+      const data = await response.json();
+
+      return `Bearer ${data.jwt_token}`;
+    }
   } catch (e) {
     // TODO: доделать обработку ошибок
   }
