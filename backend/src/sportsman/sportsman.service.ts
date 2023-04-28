@@ -6,7 +6,6 @@ import { SportsmanErrorExceptionInfoNotFound } from "../error/sportsman-error.ex
 import { SportsmanCreateDto } from "./dto/sportsman-create.dto";
 import { plainToClass } from "class-transformer";
 import { PassportCreateDto } from "../passport/dto/passport-create.dto";
-import { RegistrationDto } from "../registration/dto/registration.dto";
 import { PassportService } from "../passport/passport.service";
 import { SportsmanUpdateDto } from "./dto/sportsman-update.dto";
 

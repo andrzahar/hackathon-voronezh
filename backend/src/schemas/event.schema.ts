@@ -1,7 +1,6 @@
 import { Document, Types } from 'mongoose';
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { IsDate } from 'class-validator';
-import { EventMemberDocument } from "./eventMember.schema";
 import { Transform } from "class-transformer";
 
 export type EventDocument = Event & Document;
@@ -12,10 +11,15 @@ export enum Status {
   Completed = 'прошедший'
 }
 
-//TODO: изменить в соответсвии с контрактом
 @Schema()
 export class Event {
   id: Types.ObjectId;
+  @Prop({required:true})
+  name:string;
+  @Prop({required:true})
+  shortName:string;
+  @Prop({required:true})
+  description:string;
   @Prop({ required: true, type: Date })
   @IsDate()
   @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)

@@ -8,6 +8,12 @@ export class EventAddDto {
   @IsDate()
   @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   time_end: Date;
+  @IsNotEmpty()
+  name:string;
+  @IsNotEmpty()
+  shortName:string;
+  @IsNotEmpty()
+  description:string;
   @IsDate()
   @Transform(({ value }) => value instanceof Date ? value.toISOString() : value)
   time_start: Date;
