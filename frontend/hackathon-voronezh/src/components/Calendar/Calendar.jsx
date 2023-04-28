@@ -41,7 +41,7 @@ const Calendar = () => {
 
         </div>
       {role !== USER_ROLE.NONE ? (
-        <CalendarBody events={events} />
+        <CalendarBody events={events} setEvents={setEvents} />
       ) : (
           <div>
               <h2 className={classes.warning}>

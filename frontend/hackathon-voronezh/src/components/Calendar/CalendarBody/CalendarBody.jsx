@@ -13,7 +13,7 @@ import { getEvents } from '../../../store/services/services';
 import { USER_ROLE } from '../../core/UserRoleEnum';
 import { getDate } from '../../core/getDate';
 
-const CalendarBody = ({events}) => {
+const CalendarBody = ({events, setEvents}) => {
   const token = useSelector(getUserToken);
 
   useEffect(() => {
