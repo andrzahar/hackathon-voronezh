@@ -1,9 +1,10 @@
-import {ROUTE_ACCOUNT, ROUTE_ACHIEVEMENTS, ROUTE_APPROVE, ROUTE_AUTH, ROUTE_MAIN_CONTAINER} from './routes';
+import {ROUTE_ACCOUNT, ROUTE_ACHIEVEMENTS, ROUTE_APPROVE, ROUTE_AUTH, ROUTE_FAQ, ROUTE_MAIN_CONTAINER} from './routes';
 import Calendar from '../components/Calendar/Calendar';
 import WelcomePage from '../components/WelcomePage/WelcomePage';
 import PersonalCabinet from '../components/PersonalCabinet/PersonalCabinet';
 import Achievements from '../components/Achievements/Achievements';
 import Approve from "../components/Approve/Approve";
+import FAQ from "../components/FAQ/FAQ";
 
 export const BASE_ROUTES = [
   {
@@ -25,6 +26,11 @@ export const BASE_ROUTES = [
     path: ROUTE_APPROVE,
     name: 'Добавление участника',
     Element: Approve,
+  },
+  {
+    path: ROUTE_FAQ,
+    name: 'Частозадаваемые вопросы',
+    Element: FAQ,
   },
 ];
 

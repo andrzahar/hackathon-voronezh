@@ -6,6 +6,7 @@ import { representativeReducer } from './reducers/representative';
 import { partnerReducer } from './reducers/partner';
 import { userReducer } from './reducers/userReducer';
 import { eventReducer } from './reducers/eventReducer';
+import {FAQReducer} from "./reducers/FAQReducer";
 
 export const rootReducer = combineReducers({
   user: userReducer,
@@ -14,6 +15,7 @@ export const rootReducer = combineReducers({
   representative: representativeReducer,
   partner: partnerReducer,
   event: eventReducer,
+  FAQ: FAQReducer
 });
 
 export const store = createStore(rootReducer);
