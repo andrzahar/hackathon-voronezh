@@ -24,6 +24,15 @@ export class UsersService {
     return user;
   }
 
+  public async findOneByMail(mail: string) {
+    const user = await this.usersModel.findOne({mail:mail}).exec();
+
+    if (!user) {
+      throw new UserErrorFoundException();
+    }
+    return user;
+  }
+
   public async create(dto: RegistrationDto): Promise<UserDocument> {
     await validateOrReject(dto);
     const user = plainToClass(this.usersModel, dto);
@@ -64,10 +73,6 @@ export class UsersService {
     }
 
     return this.usersModel.findById(dto.userId)
-  }
-
-  private async findById(id: Types.ObjectId): Promise<UserDocument> {
-    return this.usersModel.findById(id).exec();
   }
 
 }
