@@ -1,27 +1,39 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import logo from "../../../images/light_background.svg";
 import classes from "./CalendarBody.module.css";
 import Measure from "../../Measure/Measure";
 import {useSelector} from "react-redux";
 import EventEditModal from "../../EditModal/EventEditModal/EventEditModal";
+import {getUserToken} from "../../../store/selectors/authSelector";
+import {getEvents} from "../../../store/services/services";
+import {USER_ROLE} from "../../core/UserRoleEnum";
+import {getDate} from "../../core/getDate";
 
 const CalendarBody = () => {
+    const [events, setEvents] = useState([]);
+    const token = useSelector(getUserToken);
+
+    useEffect(async () => {
+        const a = await getEvents(token);
+        console.log(a);
+        setEvents(a);
+    }, []);
+
     return (
         <div className={classes.calendarBody}>
-            <CalendarItem/>
-            <CalendarItem/>
-            <CalendarItem/>
-            <CalendarItem/>
-            <CalendarItem/>
+            {events.map(item => (
+                    <CalendarItem key={item.id} event={item}/>
+                ))
+            }
         </div>
     );
 };
 
-const CalendarItem = () => {
+const CalendarItem = ({event}) => {
     const [modal, setModal] = useState(false);
     const [modalEvent, setModalEvent] = useState(false);
 
@@ -33,12 +45,12 @@ const CalendarItem = () => {
         setModalEvent(false);
     }
 
-    const event = useSelector(state => state.event);
+    // const event = useSelector(state => state.event);
     const role = useSelector(state => state.user.role);
 
     return (
         <>
-            {modal ? <Measure closeModal={() => closeModal()}/> : <></>}
+            {modal ? <Measure event={event} closeModal={() => closeModal()}/> : <></>}
             {modalEvent ? <EventEditModal closeModal={() => closeEventModal()}/> : <></>}
             <Card style={{width: "18rem"}}>
                 <style type="text/css">
@@ -56,29 +68,27 @@ const CalendarItem = () => {
                 </style>
                 <Card.Img variant="top" src={logo}/>
                 <Card.Body>
-                    <Card.Title>Чемпионат России по программированию</Card.Title>
-                    <Card.Text>Продуктовое программирование</Card.Text>
+                    <Card.Title>{event.name}</Card.Title>
+                    <Card.Text>{event.description}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroup.Item>Дата проведения: {event.start} - {event.end}</ListGroup.Item>
-                    <ListGroup.Item>
-                        Федерация спортивного программирования
-                    </ListGroup.Item>
+                    <ListGroup.Item>Дата проведения: {getDate(event.time_start)} - {getDate(event.time_end)}</ListGroup.Item>
+                    <ListGroup.Item>{event.creator.firstname} {event.creator.surname}</ListGroup.Item>
                     <ListGroup.Item>Статус: {event.status}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
                     <Button
                         className={classes.cardBtn}
-                        variant={"blue"}
+                        variant="blue"
                         onClick={() => setModal(true)}
                         href="#"
                     >
                         Подробнее
                     </Button>
-                    {role !== 'sportsman'?
+                    {role !== USER_ROLE.SPORTSMAN ?
                         <Button
                             className={classes.cardBtn}
-                            variant={"red"}
+                            variant="red"
                             onClick={() => setModalEvent(true)}
                             href="#"
                         >

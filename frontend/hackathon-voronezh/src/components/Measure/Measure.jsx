@@ -6,11 +6,9 @@ import {Accordion} from "react-bootstrap";
 
 import logo from "../../images/light_background.svg";
 import classes from "./Measure.module.css";
-import {useSelector} from "react-redux";
+import {getDate} from "../core/getDate";
 
-const Measure = ({closeModal}) => {
-    const event = useSelector(state => state.event);
-
+const Measure = ({closeModal, event}) => {
     return (
         <div
             className={`modal show`}
@@ -39,16 +37,14 @@ const Measure = ({closeModal}) => {
             </style>
             <Modal.Dialog style={{zIndex: 2}}>
                 <Modal.Header closeButton onClick={() => closeModal()}>
-                    <Modal.Title>Название мероприятия</Modal.Title>
+                    <Modal.Title>{event.name}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <Card.Img variant="top" src={logo}/>
                     <ListGroup className="list-group-flush">
-                        <ListGroup.Item>Дата проведения: {event.start} - {event.end}</ListGroup.Item>
-                        <ListGroup.Item>
-                            Федерация спортивного программирования
-                        </ListGroup.Item>
+                        <ListGroup.Item>Дата проведения: {getDate(event.time_start)} - {getDate(event.time_end)}</ListGroup.Item>
+                        <ListGroup.Item>{event.creator.firstname} {event.creator.surname}</ListGroup.Item>
                         <ListGroup.Item>Статус: {event.status}</ListGroup.Item>
                     </ListGroup>
                     <ListGroup>
@@ -58,7 +54,7 @@ const Measure = ({closeModal}) => {
                                 <Accordion.Body>
                                     {event.members.map(user => (
                                             <div>
-                                                {user.eventMember.user.surname} {user.eventMember.user.name}
+                                                {user.surname} {user.firstname}
                                             </div>
                                         )
                                     )}
@@ -68,16 +64,7 @@ const Measure = ({closeModal}) => {
                     </ListGroup>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>Краткая информация о мероприятии:</ListGroup.Item>
-                        <ListGroup.Item>
-                        X-MAS HACK 2022 – это не просто хакатон. Это масштабное мероприятие,
-                        в котором шансы попытать удачу есть у каждого.
-                        <br/>
-                        Идеатон на X-MAS HACK – секция, в которой ты можешь предложить свою
-                        идею, проработанную по определенным критериям, обсудить ее с
-                        экспертом и побороться за денежный приз.
-                        <br/>
-                        Общий призовой фонд X-MAS HACK 2022 составляет 1 700 000 рублей.
-                        </ListGroup.Item>
+                        <ListGroup.Item>{event.description}</ListGroup.Item>
                     </ListGroup>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>Оценка</ListGroup.Item>
