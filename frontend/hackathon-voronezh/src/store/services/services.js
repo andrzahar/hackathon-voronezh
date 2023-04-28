@@ -1,6 +1,6 @@
 import { fetchLogin, fetchRegister } from '../../api/authApi';
 import { fetchUserInfo } from '../../api/userApi';
-import { fetchGetEvent } from '../../api/eventApi';
+import {fetchCreateEvent, fetchGetEvent} from '../../api/eventApi';
 
 export async function authLogin(credentials) {
   try {
@@ -11,8 +11,6 @@ export async function authLogin(credentials) {
 
       return `Bearer ${data.jwt_token}`;
     }
-
-    return userKey;
   } catch (e) {
     // TODO: доделать обработку ошибок
   }
@@ -46,6 +44,20 @@ export async function getUserInfo(params) {
 export async function getEvents(params) {
   try {
     const response = await fetchGetEvent(params);
+
+    if (response.ok) {
+      const data = await response.json();
+
+      return data;
+    }
+  } catch (e) {
+    // TODO: доделать обработку ошибок
+  }
+}
+
+export async function createEvents(body, params) {
+  try {
+    const response = await fetchCreateEvent(body, params);
 
     if (response.ok) {
       const data = await response.json();

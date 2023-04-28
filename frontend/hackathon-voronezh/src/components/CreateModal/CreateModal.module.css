@@ -1,0 +1,28 @@
+.background{
+    width: 100%;
+    height: 100%;
+    background-color: var(--color--darkGrey);
+    opacity: 0.5;
+    position: fixed;
+}
+.personal_img{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    background-color: var(--color--darkGrey);
+    margin: auto;
+}
+.personal_img:hover{
+    background-color: grey;
+    cursor: pointer;
+}
+.avatar:hover{
+    background-color: grey;
+    cursor: pointer;
+}
+.avatar{
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 18px;
+}

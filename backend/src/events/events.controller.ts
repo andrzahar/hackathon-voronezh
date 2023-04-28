@@ -1,14 +1,15 @@
-import { Body, Controller, Get, MethodNotAllowedException, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Headers, MethodNotAllowedException, Post, Put, UseGuards } from "@nestjs/common";
 import { EventsService } from "./events.service";
 import { Roles } from "../auth/roles-auth.decorator";
 import { RolesGuard } from "../auth/roles.guard";
 import { EventAddDto } from "./dto/event-add.dto";
 import { EventUpdateDto } from "./dto/event-update.dto";
 import { Public } from "../auth/auth.guard";
+import { JwtService } from "@nestjs/jwt";
 
 @Controller('events')
 export class EventsController {
-  constructor(private eventsService: EventsService) {}
+  constructor(private eventsService: EventsService, private jwtService: JwtService) {}
 
   @Public()
   @Get()
@@ -16,8 +17,17 @@ export class EventsController {
      return this.eventsService.getAll()
   }
 
+  @Get('/creator')
+  public async getEventByCreator(@Headers() headers) {
+    const authHeader = headers.authorization;
+    const token = authHeader.split(' ')[1]
+
+    const user = this.jwtService.verify(token);
+    return this.eventsService.getForUser(user.id)
+  }
+
   @Post()
-  @Roles('representative', 'partner')
+  @Roles('representative', 'partner', 'administrator')
   @UseGuards(RolesGuard)
   public async createEvent(@Body() dto: EventAddDto) {
      try {
@@ -28,7 +38,7 @@ export class EventsController {
   }
 
   @Put()
-  @Roles('representative', 'partner')
+  @Roles('representative', 'partner', 'administrator')
   @UseGuards(RolesGuard)
   public async updateEvent(@Body() dto: EventUpdateDto) {
     try {

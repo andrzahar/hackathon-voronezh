@@ -1,9 +1,6 @@
-// TODO: список прошедших мероприятий, собственные результаты на них
-
 import { ListGroup } from 'react-bootstrap';
 
 import classes from './AchievementsListPage.module.css';
-// eslint-disable-next-line import/extensions
 import AchievementsItem from './AchievementsItem';
 
 const AchievementsListPage = () => {

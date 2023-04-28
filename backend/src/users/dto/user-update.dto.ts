@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsPhoneNumber } from "class-validator";
+import {  IsPhoneNumber } from "class-validator";
 import { Role } from "../../schemas/user.schema";
 import { Optional } from "@nestjs/common";
 
