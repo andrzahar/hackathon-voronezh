@@ -4,13 +4,27 @@ import classes from './Calendar.module.css';
 import CalendarFooter from './CalendarFooter/CalendarFooter.jsx';
 import CalendarBody from './CalendarBody/CalendarBody.jsx';
 import { USER_ROLE } from '../core/UserRoleEnum';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import EventCreateModal from "../CreateModal/EventCreateModal/EventCreateModal";
+import {getEvents} from "../../store/services/services";
+import {getUserToken} from "../../store/selectors/authSelector";
 
 const Calendar = () => {
   const role = useSelector(state => state.user.role);
   const id = useSelector(state => state.user._id);
     const [modalEventCreate, setModalEventCreate] = useState(false);
+    const [events, setEvents] = useState([]);
+    const token = useSelector(getUserToken);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const a = await getEvents(token);
+
+            setEvents(a);
+        };
+
+        fetchData();
+    }, [token]);
 
     const toggleEventModal = () => {
         setModalEventCreate(prev => !prev);
@@ -18,7 +32,7 @@ const Calendar = () => {
 
   return (
     <div style={{ width: '100%' }}>
-        {modalEventCreate ? <EventCreateModal closeModal={toggleEventModal} /> : <></>}
+        {modalEventCreate ? <EventCreateModal  events={events} setEvents={setEvents}  closeModal={toggleEventModal} /> : <></>}
 
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'  }}>
             <h1 className={classes.title}>Календарь мероприятий</h1>
@@ -39,7 +53,7 @@ const Calendar = () => {
 
         </div>
       {role !== USER_ROLE.NONE ? (
-        <CalendarBody />
+        <CalendarBody events={events}/>
       ) : (
           <div>
               <h2 className={classes.warning}>

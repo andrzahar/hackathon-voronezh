@@ -8,7 +8,7 @@ import classes from './EventCreateModal.module.css';
 import {createEvents} from "../../../store/services/services";
 import {getUserToken} from "../../../store/selectors/authSelector";
 
-const EventCreateModal = ({ closeModal }) => {
+const EventCreateModal = ({ closeModal, events, setEvents }) => {
   const [nameValue, setNameValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
   const [startValue, setStartValue] = useState('');
@@ -25,6 +25,8 @@ const EventCreateModal = ({ closeModal }) => {
     };
 
     const resp = await createEvents(body, { Authorization: token });
+
+    setEvents(prev => [...prev, resp]);
 
     closeModal();
   };
